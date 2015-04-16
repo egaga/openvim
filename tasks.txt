@@ -1,0 +1,27 @@
+- refactor
+-- doActionFor is not properly done, it's specific to deleting; make a general applyActionTo which finds movement
+--- action can give accepted movements, which are checked when user is giving movement area
+-- robust test engine, e.g. if test case has multiple cursors or cursor wrapping more than one character, show it to the user properly!
+-- command should be added only if it is done fully (for repeat command to make sense)
+
+- should show macro recording on status bar?
+- tutorial: show previous cursor
+
+- add commands for
+-- /pattern
+-- times-actions: 
+--- 3ihey will yield to heyheyhey 
+--- d3fa will remove until third occurrence of a
+-- yanking
+--- movements can be inclusive (i) or exclusive (w)
+-- pasting
+-- www.reddit.com/r/vimcommands/
+-- remove highlighting: http://www.reddit.com/r/vim/comments/k8t2l/once_my_search_is_over_how_do_i_remove_the/
+
+- a solver: user makes a) initial text b) result text; then AI tries to solve/optimize which keycombinations get from a) to b)
+- statistics for commands, e.g. for commands over one character, like "2w"
+- vimhero: try to complete vim-tasks as quickly as possible
+- documentation could be hosted on a site. two column panel would have the documentable item on the left and on the right there could be live demo how it works
+- vimtask: column based tasklist like trello.com but with vim commands
+- vim dropping paragraphs, tetrislike, action takes time, so faster with 2d
+http://twitter.github.com/bootstrap

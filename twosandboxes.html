@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'> 
+<head>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" type="text/css" href="css.css?version={VERSION}" />
+  <title>Interactive Vim tutorial - two sandboxes</title>
+
+  <!-- GENERAL (mostly) -->
+
+  <script type="text/Javascript" src="js/engine/messager.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/view/blinking.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/engine/generic.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/engine/document.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/view/comparison.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/view/context_help.js?version={VERSION}"></script>
+
+  <!-- VIM specific parts -->
+  <script type="text/Javascript" src="js/engine/executor.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/engine/interpreter.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/view/view.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/commands/searchcommands.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/commands/visualcommands.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/commands/visualblockcommands.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/commands/timescommands.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/commands/commands.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/view/event.js?version={VERSION}"></script>
+  <script type="text/Javascript" src="js/init.js?version={VERSION}"></script>
+
+  <!--
+  <script type="text/Javascript" src="js/jquery.js"></script>
+  -->
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.6.4");
+
+    google.setOnLoadCallback(function() {
+        init_vim();
+
+        $('.screen_view').click(function() {
+            $('.active_context').removeClass('active_context');
+            $(this).addClass('active_context');
+        });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="navigation">
+    <a href="development.html">Home</a>
+    <a href="tutorial.html">Tutorial</a>
+    <a href="sandbox.html">Sandbox</a>
+    <a href="twosandboxes.html" class="selected">Two sandboxes</a>
+    <a href="tests.html">Testing</a>
+    <a class="bug_or_request" href="https://bitbucket.org/egaga/open-vim/issues?status=new&status=open">Bugs</a>
+  </div>
+
+  <div class="screen_view active_context">
+    <h1>Sandbox #1</h1>
+    <div class="content">
+        <div class="statusbar">
+            <div class="statustext"></div>
+            <div class="cursorlocation"></div>
+            <div style="clear: both;"></div>
+        </div>
+
+        <div class="text editor">
+            Now it is plain that everything which is a subject of praise is praised for being of a certain kind and bearing a certain relation to something else:!LINE_BREAK!for instance, the just, and the valiant, and generally the good man.Aristotle
+        </div>
+        
+        <div class="searchbar">
+         <span class="searchPrefix">/</span>
+         <span class="searchText"></span>
+         <span class="searchHelp">&lt;Enter to find&gt;</span>
+        </div>
+      
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="sidebar">
+        <h4>Context-Aware Actions</h4>
+        <h4 class="context_pressed"></h4>
+        <p class="command-mode"></p>
+        <p class="insert-mode"></p>
+    </div>
+
+    <div style="clear: both;"></div>
+  </div>
+
+  <div class="screen_view" style="margin-top: 50px;">
+    <h1 style="float: left;">Sandbox #2</h1>
+    <div class="content">
+        <div class="statusbar">
+            <div class="statustext"></div>
+            <div class="cursorlocation"></div>
+            <div style="clear: both;"></div>
+        </div>
+
+        <div class="text editor">
+            "When someone is searching," said Siddhartha, "then it might easily happen that the only thing his eyes still see is that what he searches for, that he is unable to find anything, to let anything enter his mind, because he always thinks of nothing but the object of his search, because he has a goal, because he is obsessed by the goal.!LINE_BREAK!Searching means: having a goal. But finding means: being free, being open, having no goal.!LINE_BREAK!You, oh venerable one, are perhaps indeed a searcher, because, striving for your goal, there are many things you don't see, which are directly in front of your eyes."!LINE_BREAK!- Hermann Hesse
+        </div>
+        <div class="searchbar">
+           <span class="searchPrefix">/</span>
+           <span class="searchText"></span>
+           <span class="searchHelp">&lt;Enter to find&gt;</span>
+        </div>
+
+        <div style="clear: both;"></div>
+    </div>
+
+    <div class="sidebar">
+        <h4>Context-Aware Actions</h4>
+        <h4 class="context_pressed"></h4>
+        <p class="command-mode"></p>
+        <p class="insert-mode"></p>
+    </div>
+
+    <div style="clear: both;"></div>
+  </div>
+</body>
+</html>
+

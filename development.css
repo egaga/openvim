@@ -1,0 +1,88 @@
+    body {
+        padding: 0px;
+        font-family: monospace, Verdana;
+    }
+
+    .cloud { width: 100%; display: inline-block; }
+
+    .cloud > div {
+        float: left;
+        width: 300px;
+        margin: 10px 20px;
+        min-height: 150px;
+    }
+
+    p {
+        padding: 10px;
+        width: 300px;
+        margin: 25px 0px;
+    }
+
+    div > a {
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        border-radius: 0.5em;
+        box-shadow: 3px 2px 2px black;
+    }
+
+    div > a:hover {
+        background-color: #9acd32;
+    }
+
+    .tutorial {
+        font-size: 3em;
+        background-color: purple;
+    }
+    
+    .sandbox {
+        background-color: purple;
+    }
+
+    .personal a, .external_link {
+        border-radius: 0;
+        padding: 2px 4px;
+        box-shadow: none;
+    }
+
+    .external_link {
+        background-color: white;
+        color: black;
+    }
+
+    .personal a {
+        background-color: #333;
+        color: white;
+    }
+
+    .personal a:hover, .external_link:hover {
+        background-color: #add8e6;
+        color: black;
+    }
+
+    .copyright, .support, .contact {
+        margin: 5px;
+        width: 120px;
+    }
+
+    .personal table { color: white; background-color: #333; }
+
+    .header {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 30px;
+     }
+
+    h1 { margin: 0px 10px; }
+    h3 { padding: 0px 10px; font-weight: normal; font-size: 1em; color: blue; }
+
+    .ideas h3 { margin: 2px; color: #add8e6;}
+    .ideas li { padding-top: 15px !important; }
+    .ideas { width: 650px; }
+
+    .bottom { border-top: 5px solid #555; width: 100%; background-color: #333; color: white; padding: 10px; margin: 0; box-shadow: none; }
+    .bottom > div { display: inline-block; border-left: 1px solid #666; padding-left: 15px; }
+
+    .personal { margin-right: 20px; margin-bottom: 20px; background-color: #333; width: 400px; float: left; }
+
+    .emphasize { color: blue; }

@@ -1,0 +1,6 @@
+- vim_r: characters with special keys (e.g. 'H') does not work, (e.g. instead of 'H', 'shift-h' is printed, 'Backspace' another example)
+- umlauts don't work in insert mode: ä, ö
+- dl or lh does not work
+- shift does not work
+- shift-J does not work correcly: try with aristotle test
+- dk does not work: leaves lines
