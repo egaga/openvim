@@ -1,7 +1,7 @@
 # OpenVim
 Interactive tutorial for Vim.
 
-== What is OpenVim? ==
+## What is OpenVim?
 
 OpenVim is a web-based project to let people quickly have a taste what kind of an editor Vim is.
 Motivation comes from the fact that Vim is very useful but the learning curve is devastating.
@@ -9,18 +9,19 @@ Motivation comes from the fact that Vim is very useful but the learning curve is
 OpenVim is based on a custom engine that interprets vim commands. 
 Fun fact: the engine operates directly on the dom but can be easily refactored to a model that is not view-dependent.
 
-== How to help? ==
+## How to help?
 
-**If you want to help with actual code, look at the issues contributed by users. Especially keybindings are hard for me to get right in different environments.**
+If you want to help with actual code, look at the existing GitHub issues. Especially keybindings are hard for me to get right in different environments.
 
-== Development ==
+## Development
 
 See Trello board for tasks:
 [[https://trello.com/board/openvim/4e71135e9dbc8100001b9c5c|Development tasks]]
 
-== License ==
+## License
 
 MIT License.
 
-== Contact ==
-henrik.huttunen@gmail.com or [[http://twitter.com/egaga|egaga@twitter]]
+## Contact
+
+henrik.huttunen@gmail.com or [egaga@twitter](http://twitter.com/egaga)
