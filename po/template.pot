@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: tutorial.html:97
+msgid "&lt;Enter to find&gt;"
+msgstr ""
+
+#: tutorial.html:78
+msgid "Bugs"
+msgstr ""
+
+#: tutorial.html:74
+msgid "Development"
+msgstr ""
+
+#: tutorial.html:12
+msgid "Interactive Vim tutorial"
+msgstr ""
+
+#: tutorial.html:73
+msgid "Practice"
+msgstr ""
+
+#: tutorial.html:110
+msgid "Sections"
+msgstr ""
+
+#: tutorial.html:111
+msgid "Toggle"
+msgstr ""
+
+#: tutorial.html:72
+msgid "Tutorial"
+msgstr ""
+
+#: tutorial.html:105
+msgid "Virtual keyboard (shows keys you need to press on your physical keyboard; not clickable)"
+msgstr ""
