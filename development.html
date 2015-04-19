@@ -4,6 +4,8 @@
 <head>
   <meta charset='utf-8' />
   <title>Open Vim</title>
+  <link rel="stylesheet" type="text/css"
+                href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="development.css?version={VERSION}" />
   
   <script type="text/javascript">
@@ -19,26 +21,27 @@
   </script>  
 </head>
 
-<body>
+<body ng-app = "app">
+<div ng-controller="TestCtrl">	
   <div class="header">
-    <h1>Open Vim</h1>
-    <h3>Collection of <a class="external_link" href="http://www.vim.org/">Vim</a> learning tools</h3>
+    <h1 translate>Open Vim</h1>
+    <h3 translate>Collection of <a translate class="external_link" href="http://www.vim.org/">Vim</a> learning tools</h3>
   </div>
 
   <div class="cloud">
       <div>
-          <a href="https://trello.com/board/openvim/4e71135e9dbc8100001b9c5c">Development</a>
-          <p>Development tasks in Trello.com. <span class="emphasize">Vote and comment!</span></p>
+          <a translate href="https://trello.com/board/openvim/4e71135e9dbc8100001b9c5c">Development</a>
+          <p translate>Development tasks in Trello.com. <span translate class="emphasize">Vote and comment!</span></p>
       </div>
 
       <div>
-        <a href="tests.html">Testing</a>
-        <p>Supported commands verified by running against Vim engine</p>
+        <a translate href="tests.html">Testing</a>
+        <p translate>Supported commands verified by running against Vim engine</p>
       </div>
 
       <div>
-        <a href="https://github.com/egaga/openvim">Source code</a>
-        <p><span class="emphasize">MIT</span> licensed source code in GitHub. Written in html5/css3/<span class="emphasize">javascript</span></p>
+        <a translate href="https://github.com/egaga/openvim">Source code</a>
+        <p translate><span translate class="emphasize">MIT</span> licensed source code in GitHub. Written in html5/css3/<span class="emphasize">javascript</span></p>
       </div>
    </div>
 
@@ -46,25 +49,31 @@
 
     <div class="personal">
     <table>
-        <tr><td class="copyright">Copyright</td><td><a href="http://personal.inet.fi/koti/egaga">Henrik Huttunen</a></td></tr>
-        <tr><td class="contact">Contact</td><td><a href="mailto:henrik.huttunen@gmail.com">henrik.huttunen@gmail.com</a></td></tr>
-        <tr><td class="support">I work at</td><td><a href="http://www.evident.fi">Evident Solutions</a></td></tr>
+        <tr><td translate class="copyright">Copyright</td><td><a href="http://personal.inet.fi/koti/egaga">Henrik Huttunen</a></td></tr>
+        <tr><td translate class="contact">Contact</td><td><a href="mailto:henrik.huttunen@gmail.com">henrik.huttunen@gmail.com</a></td></tr>
+        <tr><td translate class="support">I work at</td><td><a href="http://www.evident.fi">Evident Solutions</a></td></tr>
     </table>
     </div>
 
    <div class="ideas">
-      <h3>Ideas to be realized</h3>
+      <h3 translate>Ideas to be realized</h3>
       <ul>
-        <li>Solver/competition: given initial text and result text, what is the minimal command combination</li>
-        <li>Statistics for used commands</li>
-        <li>Browser extension, attaching Vim to textarea</li>
-        <li>Vim hero: complete vim-tasks as quickly as possible</li>
-        <li>Documentation on the web; partly executable</li>
-        <li>Vim tasks: column based tasklist like http://www.trello.com but with vim commands</li>
-        <li>Vim tetris, movement is faster using powerful commands</li>
+        <li translate>Solver/competition: given initial text and result text, what is the minimal command combination</li>
+        <li translate>Statistics for used commands</li>
+        <li translate>Browser extension, attaching Vim to textarea</li>
+        <li translate>Vim hero: complete vim-tasks as quickly as possible</li>
+        <li translate>Documentation on the web; partly executable</li>
+        <li translate>Vim tasks: column based tasklist like http://www.trello.com but with vim commands</li>
+        <li translate>Vim tetris, movement is faster using powerful commands</li>
       </ul>
    </div>
   </div>
+</div>  
+<script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+	<script src="app.js"></script>
+        <script src="translations.js"></script>
+
 </body>
 </html>
 
