@@ -5,7 +5,9 @@
   <meta charset='utf-8' />
   <link rel="stylesheet" type="text/css" href="css.css?version={VERSION}" />
   <link rel="stylesheet" type="text/css" href="test.css?version={VERSION}" />
-  <title>Interactive Vim tutorial - testing</title>
+  <title translate>Interactive Vim tutorial - testing</title>
+ <link rel="stylesheet" type="text/css"
+               href="bower_components/bootstrap/dist/css/bootstrap.css">
 
   <!-- GENERAL (mostly) -->
   <script type="text/Javascript" src="js/engine/messager.js?version={VERSION}"></script>
@@ -49,7 +51,8 @@
   </script>
  </head>
 
-<body>
+<body ng-app="app">
+<div ng-controller="TestCtrl">	
     <div class="testview">
         <div class="test_statistics">
             <div class="tests_run"></div>
@@ -59,27 +62,32 @@
 
         <div class="tests_result">
             <div class="tests_allpassed">
-                <h2>OK!</h2>
+                <h2 translate>OK!</h2>
             </div>
 
             <div class="tests_problems">
-                <h2>FAIL!</h2>
+                <h2 translate>FAIL!</h2>
             </div>
         </div>
 
         <div class="test_introduction">
-            <p>This page contains unit tests for the Vim engine. Some of the commands are not implemented, and thus fail the test.</p>
-            <p>Click on the name of the test to see details.</p>
-            <p>Usually, a test consists of starting text, commands (key combination), expected result, and what actually engine reported after applying the commands.</p>
-            <p>A passing test has a green header, and a failing one has red.</p>
+            <p translate>This page contains unit tests for the Vim engine. Some of the commands are not implemented, and thus fail the test.</p>
+            <p translate>Click on the name of the test to see details.</p>
+            <p translate>Usually, a test consists of starting text, commands (key combination), expected result, and what actually engine reported after applying the commands.</p>
+            <p translate>A passing test has a green header, and a failing one has red.</p>
             <input type="button" value="Show/Hide details of all tests" id="show_test_details" style="display: none;" />
         </div>
 
-        <h3>Tests</h3>
+        <h3 translate>Tests</h3>
         <div id="appendtarget" style="clear: both;"></div>
 
         <div class="text" style="display: none;"></div>
     </div>
+   </div>
+<script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+        <script src="app.js"></script>
+	<script src="translations.js"></script>
 </body>
 </html>
 
