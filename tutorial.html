@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"> 
 
 
-  <title>Interactive Vim tutorial</title>
+  <title translate>Interactive Vim tutorial</title>
 
   <!-- GENERAL (mostly) -->
   <script type="text/Javascript" src="js/engine/messager.js?version={VERSION}"></script>
@@ -68,17 +68,17 @@
  <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
  <script src="app.js"></script>
 
- <div class="navigation">
-    <a href="tutorial.html" class="selected">Tutorial</a>
-    <a href="sandbox.html">Practice</a>
-    <a href="development.html">Development</a>
+ <div class="navigation" ng-controller="TestCtrl">
+    <a translate href="tutorial.html" class="selected">Tutorial</a>
+    <a translate href="sandbox.html">Practice</a>
+    <a translate href="development.html">Development</a>
     <!--
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.openvim.com/tutorial.html" data-text="OpenVim - Interactive Vim tutorial" data-count="horizontal" data-via="egaga">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
     -->
-    <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
+    <a translate class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
   </div>
 
-  <div class="screen_view">
+  <div class="screen_view" ng-controller="TestCtrl">
     <div class="content">
         <h3 class="title"></h3>
         <h3 class="info"></h3>
@@ -94,7 +94,7 @@
         <div class="searchbar">
           <span class="searchPrefix">/</span>
           <span class="searchText"></span>
-          <span class="searchHelp">&lt;Enter to find&gt;</span>
+          <span translate class="searchHelp">&lt;Enter to find&gt;</span>
         </div>
 
         <div style="clear: both;"></div>
@@ -102,13 +102,13 @@
 
     <div style="clear: both;"></div>
     <div class="keyboard_wrapper">
-        <p class="keyboard_description">Virtual keyboard (shows keys you need to press on your physical keyboard; not clickable)</p>
+        <p translate class="keyboard_description">Virtual keyboard (shows keys you need to press on your physical keyboard; not clickable)</p>
     </div>
   </div>
 
-  <div class="section_menu">
-        <div class="headline">Sections</div>
-        <div class="toggle_siblings">Toggle</div>
+  <div class="section_menu" ng-controller="TestCtrl"> 
+        <div translate class="headline">Sections</div>
+        <div translate class="toggle_siblings">Toggle</div>
 
         <div class="section_menu_append_target" style="clear: both;"></div>
   </div>
