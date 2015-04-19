@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/Gruntfile.coffee
+/test
+/.jshintrc
+/.travis.yml
+/bower.json
