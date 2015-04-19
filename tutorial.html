@@ -6,7 +6,9 @@
   <link rel="stylesheet" type="text/css" href="css.css?version={VERSION}" />
   <link rel="stylesheet" type="text/css" href="tutorial.css?version={VERSION}" />
   <link rel="stylesheet" type="text/css" href="virtual_keyboard.css?version={VERSION}" />
-    
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"> 
+
+
   <title>Interactive Vim tutorial</title>
 
   <!-- GENERAL (mostly) -->
@@ -58,8 +60,15 @@
   </script>
 </head>
 
-<body>
-  <div class="navigation">
+<body ng-app="app">
+ <div ng-controller="TestCtrl">
+
+ </div>
+ <script src="bower_components/angular/angular.js"></script>
+ <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+ <script src="app.js"></script>
+
+ <div class="navigation">
     <a href="tutorial.html" class="selected">Tutorial</a>
     <a href="sandbox.html">Practice</a>
     <a href="development.html">Development</a>
