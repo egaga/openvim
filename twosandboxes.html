@@ -4,7 +4,9 @@
 <head>
   <meta charset='utf-8' />
   <link rel="stylesheet" type="text/css" href="css.css?version={VERSION}" />
-  <title>Interactive Vim tutorial - two sandboxes</title>
+  <title translate>Interactive Vim tutorial - two sandboxes</title>
+  <link rel="stylesheet" type="text/css"
+                href="bower_components/bootstrap/dist/css/bootstrap.css">
 
   <!-- GENERAL (mostly) -->
 
@@ -45,18 +47,19 @@
   </script>
 </head>
 
-<body>
+<body ng-app="app">
+<div ng-controller="TestCtrl">	
   <div class="navigation">
-    <a href="development.html">Home</a>
-    <a href="tutorial.html">Tutorial</a>
-    <a href="sandbox.html">Sandbox</a>
-    <a href="twosandboxes.html" class="selected">Two sandboxes</a>
-    <a href="tests.html">Testing</a>
-    <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
+    <a translate href="development.html">Home</a>
+    <a translate href="tutorial.html">Tutorial</a>
+    <a translate href="sandbox.html">Sandbox</a>
+    <a translate href="twosandboxes.html" class="selected">Two sandboxes</a>
+    <a translate href="tests.html">Testing</a>
+    <a translate class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
   </div>
 
   <div class="screen_view active_context">
-    <h1>Sandbox #1</h1>
+    <h1 translate>Sandbox #1</h1>
     <div class="content">
         <div class="statusbar">
             <div class="statustext"></div>
@@ -64,21 +67,21 @@
             <div style="clear: both;"></div>
         </div>
 
-        <div class="text editor">
+        <div translate class="text editor">
             Now it is plain that everything which is a subject of praise is praised for being of a certain kind and bearing a certain relation to something else:!LINE_BREAK!for instance, the just, and the valiant, and generally the good man.Aristotle
         </div>
         
         <div class="searchbar">
          <span class="searchPrefix">/</span>
          <span class="searchText"></span>
-         <span class="searchHelp">&lt;Enter to find&gt;</span>
+	 <span class="searchHelp">&lt;<translate>Enter to find</translate>&gt;</span>
         </div>
       
         <div style="clear: both;"></div>
     </div>
 
     <div class="sidebar">
-        <h4>Context-Aware Actions</h4>
+        <h4 translate>Context-Aware Actions</h4>
         <h4 class="context_pressed"></h4>
         <p class="command-mode"></p>
         <p class="insert-mode"></p>
@@ -88,7 +91,7 @@
   </div>
 
   <div class="screen_view" style="margin-top: 50px;">
-    <h1 style="float: left;">Sandbox #2</h1>
+    <h1 translate style="float: left;">Sandbox #2</h1>
     <div class="content">
         <div class="statusbar">
             <div class="statustext"></div>
@@ -96,20 +99,20 @@
             <div style="clear: both;"></div>
         </div>
 
-        <div class="text editor">
+        <div translate class="text editor">
             "When someone is searching," said Siddhartha, "then it might easily happen that the only thing his eyes still see is that what he searches for, that he is unable to find anything, to let anything enter his mind, because he always thinks of nothing but the object of his search, because he has a goal, because he is obsessed by the goal.!LINE_BREAK!Searching means: having a goal. But finding means: being free, being open, having no goal.!LINE_BREAK!You, oh venerable one, are perhaps indeed a searcher, because, striving for your goal, there are many things you don't see, which are directly in front of your eyes."!LINE_BREAK!- Hermann Hesse
         </div>
         <div class="searchbar">
            <span class="searchPrefix">/</span>
            <span class="searchText"></span>
-           <span class="searchHelp">&lt;Enter to find&gt;</span>
+	   <span class="searchHelp">&lt;<translate>Enter to find</translate>&gt;</span>
         </div>
 
         <div style="clear: both;"></div>
     </div>
 
     <div class="sidebar">
-        <h4>Context-Aware Actions</h4>
+        <h4 translate>Context-Aware Actions</h4>
         <h4 class="context_pressed"></h4>
         <p class="command-mode"></p>
         <p class="insert-mode"></p>
@@ -117,6 +120,11 @@
 
     <div style="clear: both;"></div>
   </div>
+ </div> 
+ <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+        <script src="app.js"></script>
+	<script src="translations.js"></script>	       
 </body>
 </html>
 
