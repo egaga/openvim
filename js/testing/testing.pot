@@ -1,0 +1,1250 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2015-04-21 12:04:+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+
+#: tests.js:588
+msgid "0"
+msgstr ""
+
+#: testsengine.js:60
+msgid ""
+"Cursor start marker [ has not been set. Use [ and ] to wrap one and only "
+"one character of the setup text."
+msgstr ""
+
+#: testsengine.js:61
+msgid "Only one [ (cursor start) can be setup."
+msgstr ""
+
+#: testsengine.js:63
+msgid ""
+"Cursor end marker ] has not been set. Use [ and ] to wrap one and only one "
+"character of the setup text."
+msgstr ""
+
+#: testsengine.js:64
+msgid ""
+"Cursor start marker [ and cursor end marker ] are not correctly setup. "
+"There must be only one character between them. Like foo[b]ar."
+msgstr ""
+
+#: testsengine.js:65
+msgid "Only one ] (cursor end) can be setup."
+msgstr ""
+
+#: testsengine.js:83
+msgid "Test failed."
+msgstr ""
+
+#: testsengine.js:88
+msgid "Test succeeded."
+msgstr ""
+
+#: testsengine.js:104
+msgid "No tests registered!"
+msgstr ""
+
+#: testsengine.js:116
+msgid "exception"
+msgstr ""
+
+#: testsengine.js:164
+msgid "assert failed for: "
+msgstr ""
+
+#: testsengine.js:166
+msgid "assert was ok for: "
+msgstr ""
+
+#: testsengine.js:179
+msgid "registering test"
+msgstr ""
+
+#: tests.js:28
+msgid "Visual mode: yank and paste a word"
+msgstr ""
+
+#: tests.js:29 tests.js:33 tests.js:51 tests.js:56 tests.js:61
+msgid "Hello, [t]his is really nice."
+msgstr ""
+
+#: tests.js:31
+msgid "Hello, this [i]s really nice."
+msgstr ""
+
+#: tests.js:35
+msgid "Hello, this is [r]eally nice."
+msgstr ""
+
+#: tests.js:37
+msgid "Hello, this is rthis [i]eally nice"
+msgstr ""
+
+#: tests.js:40
+msgid "Visual mode: yank and paste more than a line"
+msgstr ""
+
+#: tests.js:41 tests.js:45
+msgid "He[l]lo, this is|really nice."
+msgstr ""
+
+#: tests.js:43
+msgid "Hello, this is|re[a]lly nice."
+msgstr ""
+
+#: tests.js:47
+msgid "He[l]llo, this is|realo, this is|really nice."
+msgstr ""
+
+#: tests.js:50
+msgid "Visual mode: delete word"
+msgstr ""
+
+#: tests.js:53
+msgid "Hello, [s] really nice."
+msgstr ""
+
+#: tests.js:55
+msgid "Visual mode: delete two words"
+msgstr ""
+
+#: tests.js:58
+msgid "Hello, [e]ally nice."
+msgstr ""
+
+#: tests.js:60
+msgid "Visual mode: find until next 'n' and delete"
+msgstr ""
+
+#: tests.js:63
+msgid "Hello, [n]ice."
+msgstr ""
+
+#: tests.js:65
+msgid "Visual block mode: add prefix for lines"
+msgstr ""
+
+#: tests.js:66
+msgid "Zero|[F]irst|Second|Third|Fourth"
+msgstr ""
+
+#: tests.js:73
+msgid "Zero|[-] First|- Second|- Third|Fourth"
+msgstr ""
+
+#: tests.js:76
+msgid "Visual block mode: advanced movement is allowed"
+msgstr ""
+
+#: tests.js:77
+msgid "Zero|First|Second|[T]hird|Fourth"
+msgstr ""
+
+#: tests.js:84
+msgid "Zero|First|[-] Second|- Third|Fourth"
+msgstr ""
+
+#: tests.js:87
+msgid "Visual block mode: add text to the end of lines"
+msgstr ""
+
+#: tests.js:88
+msgid "Zero|Firs[t]|SecondLongIsThis|Third|Fourth"
+msgstr ""
+
+#: tests.js:95
+msgid "Zero|[F]irst?!|- SecondLongIsThis?!|- Third?!|Fourth?!"
+msgstr ""
+
+#: tests.js:98
+msgid "Visual block mode: add text after block"
+msgstr ""
+
+#: tests.js:99
+msgid "Zero|12[3]|1|12345|Fourth"
+msgstr ""
+
+#: tests.js:106
+msgid "Zero|[1]23?!|- 1  ?!|- 123?!45|Fourth?!"
+msgstr ""
+
+#: tests.js:109
+msgid "Insert 3 times given text"
+msgstr ""
+
+#: tests.js:110
+msgid "Fooba[r]?"
+msgstr ""
+
+#: tests.js:113
+msgid "FoobaHey!Hey!Hey![r]?"
+msgstr ""
+
+#: tests.js:116
+msgid "Repeating insert goes back to command mode"
+msgstr ""
+
+#: tests.js:121
+msgid "Is in command mode"
+msgstr ""
+
+#: tests.js:124
+msgid "Repeat last find with ;"
+msgstr ""
+
+#: tests.js:125 tests.js:136
+msgid "[T]his is a nice sentence."
+msgstr ""
+
+#: tests.js:127 tests.js:143 tests.js:154 tests.js:160
+msgid "Thi[s] is a nice sentence."
+msgstr ""
+
+#: tests.js:130 tests.js:141 tests.js:152 tests.js:163
+msgid "This i[s] a nice sentence."
+msgstr ""
+
+#: tests.js:132 tests.js:138 tests.js:149 tests.js:165
+msgid "This is a nice [s]entence."
+msgstr ""
+
+#: tests.js:135
+msgid "Repeat last find in opposite direction"
+msgstr ""
+
+#: tests.js:146
+msgid "Repeat last backward find"
+msgstr ""
+
+#: tests.js:147
+msgid "This is a nice sentenc[e]."
+msgstr ""
+
+#: tests.js:157
+msgid "Repeat last backward find in opposite direction"
+msgstr ""
+
+#: tests.js:158
+msgid "This [i]s a nice sentence."
+msgstr ""
+
+#: tests.js:168
+msgid "Search for pattern, case: simple text"
+msgstr ""
+
+#: tests.js:169 tests.js:183
+msgid "h[e]llo. what is up. what is?"
+msgstr ""
+
+#: tests.js:171
+msgid "what"
+msgstr ""
+
+#: tests.js:174 tests.js:179 tests.js:188 tests.js:193
+msgid "hello. [w]hat is up. what is?"
+msgstr ""
+
+#: tests.js:176 tests.js:190
+msgid "hello. what is up. [w]hat is?"
+msgstr ""
+
+#: tests.js:182
+msgid "Search for pattern, two words (tests space)"
+msgstr ""
+
+#: tests.js:185
+msgid "what is"
+msgstr ""
+
+#: tests.js:196
+msgid "Goto previous word's last character"
+msgstr ""
+
+#: tests.js:197
+msgid "This is not n[i]ce"
+msgstr ""
+
+#: tests.js:199 tests.js:209
+msgid "This is no[t] nice"
+msgstr ""
+
+#: tests.js:201
+msgid "Go to start of current word if no previous word"
+msgstr ""
+
+#: tests.js:202
+msgid "Th[i]s is"
+msgstr ""
+
+#: tests.js:204
+msgid "[T]his is"
+msgstr ""
+
+#: tests.js:206
+msgid "Goto previous word's last character, start from first character"
+msgstr ""
+
+#: tests.js:207
+msgid "This is not [n]ice"
+msgstr ""
+
+#: tests.js:211
+msgid "Goto next )"
+msgstr ""
+
+#: tests.js:212
+msgid "He[r]e|is ), right."
+msgstr ""
+
+#: tests.js:214
+msgid "Here|is [)], right."
+msgstr ""
+
+#: tests.js:216
+msgid "Goto previous ("
+msgstr ""
+
+#: tests.js:217
+msgid "Here is a(b,|ri[g]ht."
+msgstr ""
+
+#: tests.js:219
+msgid "Here is a[(]b,|right."
+msgstr ""
+
+#: tests.js:221
+msgid "Goto next }"
+msgstr ""
+
+#: tests.js:222
+msgid "He[r]e is }, right."
+msgstr ""
+
+#: tests.js:224
+msgid "Here is [}], right."
+msgstr ""
+
+#: tests.js:226
+msgid "Goto first non-blank character in current line and set to insert mode"
+msgstr ""
+
+#: tests.js:227
+msgid "  Hey, this is c[o]ol."
+msgstr ""
+
+#: tests.js:229 tests.js:310
+msgid "  [H]ey, this is cool."
+msgstr ""
+
+#: tests.js:231
+msgid "Line starts with non-blank character"
+msgstr ""
+
+#: tests.js:232
+msgid "Hey, nic[e]"
+msgstr ""
+
+#: tests.js:234
+msgid "[H]ey, nice"
+msgstr ""
+
+#: tests.js:236
+msgid "If there is not a non-blank character in the line, go to the end"
+msgstr ""
+
+#: tests.js:240
+msgid "I goes to insert mode"
+msgstr ""
+
+#: tests.js:241 tests.js:330
+msgid "Foo[b]ar"
+msgstr ""
+
+#: tests.js:243 tests.js:289
+msgid "In insert mode"
+msgstr ""
+
+#: tests.js:246
+msgid "mark position with ma, and go to it with `a"
+msgstr ""
+
+#: tests.js:247 tests.js:254
+msgid "Hi the[r]e. This is great."
+msgstr ""
+
+#: tests.js:251 tests.js:257
+msgid "Hi there. This is great[.]"
+msgstr ""
+
+#: tests.js:260
+msgid "[H]i there. This is ."
+msgstr ""
+
+#: tests.js:262
+msgid "Hi there. This is [.]"
+msgstr ""
+
+#: tests.js:265
+msgid "mark and goto start of that line with 'a"
+msgstr ""
+
+#: tests.js:266
+msgid "First|Hi the[r]e.|This is great."
+msgstr ""
+
+#: tests.js:269
+msgid "[F]irst|Hi there.|This is great."
+msgstr ""
+
+#: tests.js:273
+msgid "First|[H]i there.|This is great."
+msgstr ""
+
+#: tests.js:276
+msgid "Clear current line"
+msgstr ""
+
+#: tests.js:277
+msgid "First line|Current [l]ine|Third line"
+msgstr ""
+
+#: tests.js:279
+msgid "First line|[ ]|Third line"
+msgstr ""
+
+#: tests.js:281
+msgid "Clear empty text"
+msgstr ""
+
+#: tests.js:286
+msgid "S goes to insert mode"
+msgstr ""
+
+#: tests.js:287
+msgid "Setu[p]."
+msgstr ""
+
+#: tests.js:292
+msgid "Goto next word, ignore punctuation"
+msgstr ""
+
+#: tests.js:293
+msgid "Hel[l]o, what's up."
+msgstr ""
+
+#: tests.js:295 tests.js:298
+msgid "Hello, [w]hat's up."
+msgstr ""
+
+#: tests.js:297
+msgid "Goto previous word, ignore punctuation"
+msgstr ""
+
+#: tests.js:300
+msgid "Hell[o], what's up."
+msgstr ""
+
+#: tests.js:302
+msgid "Goto end of word, ignore punctuation"
+msgstr ""
+
+#: tests.js:303
+msgid "He[l]lo, nice."
+msgstr ""
+
+#: tests.js:305
+msgid "Hello[,] nice."
+msgstr ""
+
+#: tests.js:307
+msgid "Goto first non-blank character in current line"
+msgstr ""
+
+#: tests.js:308
+msgid "  Hey, this is [c]ool."
+msgstr ""
+
+#: tests.js:312
+msgid "Remove the only word, cursor at the beginning"
+msgstr ""
+
+#: tests.js:317
+msgid "Remove the only word, cursor at second char"
+msgstr ""
+
+#: tests.js:322
+msgid ""
+"Enter moves rest of the line to the next line, cursor at space between two "
+"words"
+msgstr ""
+
+#: tests.js:323
+msgid "F[ ]oobar hello"
+msgstr ""
+
+#: tests.js:326
+msgid "F|[ ]oobar hello"
+msgstr ""
+
+#: tests.js:329
+msgid "Enter moves rest of the line to the next line, cursor in middle of text"
+msgstr ""
+
+#: tests.js:333
+msgid "Foo|[b]ar"
+msgstr ""
+
+#: tests.js:336
+msgid "Go to corresponding (, skipping one"
+msgstr ""
+
+#: tests.js:337
+msgid "Foo ( bar ( | zet ) [)]"
+msgstr ""
+
+#: tests.js:339
+msgid "Foo [(] bar ( | zet ) )"
+msgstr ""
+
+#: tests.js:341
+msgid "Go to corresponding ), skipping one )"
+msgstr ""
+
+#: tests.js:342
+msgid "Foo bar [(] ( ) )"
+msgstr ""
+
+#: tests.js:344
+msgid "Foo bar ( ( ) [)]"
+msgstr ""
+
+#: tests.js:346
+msgid "Go to corresponding )"
+msgstr ""
+
+#: tests.js:347
+msgid "Foo bar [(] )"
+msgstr ""
+
+#: tests.js:349
+msgid "Foo bar ( [)]"
+msgstr ""
+
+#: tests.js:351
+msgid "Go to corresponding {"
+msgstr ""
+
+#: tests.js:352 tests.js:359
+msgid "Foo bar { ( ) [}]"
+msgstr ""
+
+#: tests.js:354 tests.js:357
+msgid "Foo bar [{] ( ) }"
+msgstr ""
+
+#: tests.js:356
+msgid "Go to corresponding }"
+msgstr ""
+
+#: tests.js:361
+msgid "Undo restores the state before last command"
+msgstr ""
+
+#: tests.js:370
+msgid "Macro recording and replaying"
+msgstr ""
+
+#: tests.js:371
+msgid "[f]oobar taaperi lamppu sumppi"
+msgstr ""
+
+#: tests.js:374
+msgid "is recording"
+msgstr ""
+
+#: tests.js:378
+msgid "is not recording macro"
+msgstr ""
+
+#: tests.js:379 tests.js:382
+msgid "is in command mode"
+msgstr ""
+
+#: tests.js:383
+msgid "foobar taaperi lamppu [s]umppi"
+msgstr ""
+
+#: tests.js:386
+msgid "Trying to delete downwards more lines than there is won't break things"
+msgstr ""
+
+#: tests.js:387
+msgid "first|s[e]cond|third"
+msgstr ""
+
+#: tests.js:389
+msgid "[f]irst"
+msgstr ""
+
+#: tests.js:391
+msgid "Go to line number 3"
+msgstr ""
+
+#: tests.js:392
+msgid "F[i]rst|second|third|fourth"
+msgstr ""
+
+#: tests.js:394
+msgid "First|second|[t]hird|fourth"
+msgstr ""
+
+#: tests.js:396
+msgid "If line number too large, go to last line"
+msgstr ""
+
+#: tests.js:397
+msgid "[F]irst|second|third|fourth"
+msgstr ""
+
+#: tests.js:399
+msgid "First|second|third|[f]ourth"
+msgstr ""
+
+#: tests.js:401
+msgid "Repeat command 3 times"
+msgstr ""
+
+#: tests.js:402
+msgid "Fo[o] bar cue dumdi right"
+msgstr ""
+
+#: tests.js:404
+msgid "Foo bar cue dumdi [r]ight"
+msgstr ""
+
+#: tests.js:406 tests.js:622
+msgid "Repeat command: w"
+msgstr ""
+
+#: tests.js:407 tests.js:412
+msgid "Fo[o] bar cue right"
+msgstr ""
+
+#: tests.js:409
+msgid "Foo bar cue [r]ight"
+msgstr ""
+
+#: tests.js:411
+msgid "Repeat delete word"
+msgstr ""
+
+#: tests.js:414
+msgid "Fo[ ]right"
+msgstr ""
+
+#: tests.js:416
+msgid "Trying to delete upwards more lines than there is won't break things"
+msgstr ""
+
+#: tests.js:417 tests.js:443
+msgid "first|second|th[i]rd|fourth"
+msgstr ""
+
+#: tests.js:419
+msgid "[f]ourth"
+msgstr ""
+
+#: tests.js:422
+msgid "Trying to delete downwards all existing lines"
+msgstr ""
+
+#: tests.js:423
+msgid "fi[r]st|second|third"
+msgstr ""
+
+#: tests.js:427
+msgid "Trying to delete upwards all existing lines"
+msgstr ""
+
+#: tests.js:428
+msgid "first|second|t[h]ird"
+msgstr ""
+
+#: tests.js:432
+msgid "Delete starting from cursor, maximum of 2 words, to the right"
+msgstr ""
+
+#: tests.js:433
+msgid "one t[w]o three four"
+msgstr ""
+
+#: tests.js:435
+msgid "one t[f]our"
+msgstr ""
+
+#: tests.js:437
+msgid "Delete three lines upwards"
+msgstr ""
+
+#: tests.js:438
+msgid "first|second|third|fo[u]rth|fifth"
+msgstr ""
+
+#: tests.js:440
+msgid "first|[f]ifth"
+msgstr ""
+
+#: tests.js:442
+msgid "Delete two lines upwards"
+msgstr ""
+
+#: tests.js:445
+msgid "first|[f]ourth"
+msgstr ""
+
+#: tests.js:447
+msgid "Delete two lines downwards"
+msgstr ""
+
+#: tests.js:448
+msgid "fir[s]t|second|third|fourth"
+msgstr ""
+
+#: tests.js:450
+msgid "[t]hird|fourth"
+msgstr ""
+
+#: tests.js:452
+msgid "Delete three lines downwards"
+msgstr ""
+
+#: tests.js:453
+msgid "fir[s]t|second|third|fourth|fifth"
+msgstr ""
+
+#: tests.js:455
+msgid "[f]ourth|fifth"
+msgstr ""
+
+#: tests.js:457
+msgid "Find the 3rd occurrence of a"
+msgstr ""
+
+#: tests.js:458
+msgid "Fo[o] bar har nar"
+msgstr ""
+
+#: tests.js:460
+msgid "Foo bar har n[a]r"
+msgstr ""
+
+#: tests.js:463
+msgid "A jump of a couple of words"
+msgstr ""
+
+#: tests.js:464
+msgid "H[e]llo this is fun, yea?"
+msgstr ""
+
+#: tests.js:466
+msgid "Hello this is [f]un, yea?"
+msgstr ""
+
+#: tests.js:468
+msgid "Enter should create a new line in insert mode"
+msgstr ""
+
+#: tests.js:469
+msgid "Fooba[r]"
+msgstr ""
+
+#: tests.js:472
+msgid "Fooba|[r]"
+msgstr ""
+
+#: tests.js:475
+msgid "w moves cursor to next word's first character"
+msgstr ""
+
+#: tests.js:476
+msgid "[h]ello world!"
+msgstr ""
+
+#: tests.js:478
+msgid "hello [w]orld!"
+msgstr ""
+
+#: tests.js:479
+msgid "b moves cursor backwards, to the beginning of a word"
+msgstr ""
+
+#: tests.js:480
+msgid "hello wo[r]ld"
+msgstr ""
+
+#: tests.js:482 tests.js:484
+msgid "hello [w]orld"
+msgstr ""
+
+#: tests.js:483
+msgid "b moves cursor backwards, to the beginning of the previous word"
+msgstr ""
+
+#: tests.js:486
+msgid "[h]ello world"
+msgstr ""
+
+#: tests.js:487
+msgid "e moves cursor forward, to the end of a word"
+msgstr ""
+
+#: tests.js:488
+msgid "he[l]lo world"
+msgstr ""
+
+#: tests.js:490 tests.js:493
+msgid "hell[o] world"
+msgstr ""
+
+#: tests.js:492
+msgid "e moves cursor forward, to the end of the next word"
+msgstr ""
+
+#: tests.js:495
+msgid "hello worl[d]"
+msgstr ""
+
+#: tests.js:497
+msgid "i sets insert mode"
+msgstr ""
+
+#: tests.js:502
+msgid "i does not change text when in command mode"
+msgstr ""
+
+#: tests.js:507
+msgid "key press writes text in insert mode"
+msgstr ""
+
+#: tests.js:515
+msgid "Insert at the beginning of a line"
+msgstr ""
+
+#: tests.js:516
+msgid "Not this|Foobar is [r]."
+msgstr ""
+
+#: tests.js:518
+msgid "Not this|[F]oobar is r."
+msgstr ""
+
+#: tests.js:522
+msgid "x removes character under cursor"
+msgstr ""
+
+#: tests.js:524 tests.js:539 tests.js:544 tests.js:549 tests.js:554
+msgid "foo[b]ar"
+msgstr ""
+
+#: tests.js:526
+msgid "foo[a]r"
+msgstr ""
+
+#: tests.js:529 tests.js:551 tests.js:556
+msgid "fooba[r]"
+msgstr ""
+
+#: tests.js:531
+msgid "foob[a]"
+msgstr ""
+
+#: tests.js:538
+msgid "h moves cursor one character to left"
+msgstr ""
+
+#: tests.js:541
+msgid "fo[o]bar"
+msgstr ""
+
+#: tests.js:543
+msgid "l moves cursor one character to right"
+msgstr ""
+
+#: tests.js:546
+msgid "foob[a]r"
+msgstr ""
+
+#: tests.js:548
+msgid "2l moves cursor two (2) characters to right"
+msgstr ""
+
+#: tests.js:553
+msgid "if l movement is greater than area in which it can move, stop"
+msgstr ""
+
+#: tests.js:558
+msgid "delete starting from cursor, maximum of 2 words, to the right"
+msgstr ""
+
+#: tests.js:559
+msgid "first foo[b]ar barfoo last"
+msgstr ""
+
+#: tests.js:561
+msgid "first foo[ ]last"
+msgstr ""
+
+#: tests.js:563
+msgid "Find next given character"
+msgstr ""
+
+#: tests.js:564
+msgid "f[i]nd the char4cter"
+msgstr ""
+
+#: tests.js:565
+msgid "f4"
+msgstr ""
+
+#: tests.js:566
+msgid "find the char[4]cter"
+msgstr ""
+
+#: tests.js:569
+msgid "find backwards with F"
+msgstr ""
+
+#: tests.js:570
+msgid "find the ch4racter, backwar[d]s"
+msgstr ""
+
+#: tests.js:573
+msgid "find the ch[4]racter, backwards"
+msgstr ""
+
+#: tests.js:576
+msgid "Replace character under cursor"
+msgstr ""
+
+#: tests.js:577
+msgid "h[e]llo"
+msgstr ""
+
+#: tests.js:578
+msgid "ra"
+msgstr ""
+
+#: tests.js:579
+msgid "h[a]llo"
+msgstr ""
+
+#: tests.js:581
+msgid "Delete starting from cursor (but exclude), max two words, to the left"
+msgstr ""
+
+#: tests.js:582
+msgid "foo bar z[i]p zap"
+msgstr ""
+
+#: tests.js:583
+msgid "d2b"
+msgstr ""
+
+#: tests.js:584
+msgid "foo [i]p zap"
+msgstr ""
+
+#: tests.js:586
+msgid "Go to the start of line."
+msgstr ""
+
+#: tests.js:587
+msgid "This is a se[n]tence."
+msgstr ""
+
+#: tests.js:589
+msgid "[T]his is a sentence."
+msgstr ""
+
+#: tests.js:591
+msgid "Go to the end of line"
+msgstr ""
+
+#: tests.js:592
+msgid "This [i]s a sentence."
+msgstr ""
+
+#: tests.js:594
+msgid "This is a sentence[.]"
+msgstr ""
+
+#: tests.js:596
+msgid "Delete current line"
+msgstr ""
+
+#: tests.js:597
+msgid "First line|Second [l]ine|Third line"
+msgstr ""
+
+#: tests.js:599
+msgid "First line|[T]hird line"
+msgstr ""
+
+#: tests.js:601
+msgid "Go to the start of buffer"
+msgstr ""
+
+#: tests.js:602
+msgid "First line|Second [l]ine"
+msgstr ""
+
+#: tests.js:604
+msgid "[F]irst line|Second line"
+msgstr ""
+
+#: tests.js:606
+msgid "Go to the end of buffer"
+msgstr ""
+
+#: tests.js:607
+msgid "First li[n]e|Second line"
+msgstr ""
+
+#: tests.js:609
+msgid "First line|Second lin[e]"
+msgstr ""
+
+#: tests.js:612
+msgid "Change inside word"
+msgstr ""
+
+#: tests.js:613
+msgid "Hello, D[o]rian Gray!"
+msgstr ""
+
+#: tests.js:614
+msgid "ciwMaster"
+msgstr ""
+
+#: tests.js:615
+msgid "Hello, Master[ ]Gray!"
+msgstr ""
+
+#: tests.js:617
+msgid "Change inside parentheses"
+msgstr ""
+
+#: tests.js:618
+msgid "Hello, (cr[i]es) it is a nice day!"
+msgstr ""
+
+#: tests.js:619
+msgid "ci(smiles"
+msgstr ""
+
+#: tests.js:620
+msgid "Hello, (smiles[)] it is a nice day!"
+msgstr ""
+
+#: tests.js:623
+msgid "Fo[o] bar cue"
+msgstr ""
+
+#: tests.js:625
+msgid "Foo bar [c]ue"
+msgstr ""
+
+#: tests.js:627
+msgid "Repeat command: f"
+msgstr ""
+
+#: tests.js:628
+msgid "F[o]o bar cue all"
+msgstr ""
+
+#: tests.js:630
+msgid "Foo bar cue [a]ll"
+msgstr ""
+
+#: tests.js:632
+msgid "Repeat command: dd"
+msgstr ""
+
+#: tests.js:633
+msgid "First|Sec[o]nd|Third"
+msgstr ""
+
+#: tests.js:635
+msgid "Firs[t]"
+msgstr ""
+
+#: tests.js:637
+msgid "Insert after cursor, stay in insert mode"
+msgstr ""
+
+#: tests.js:638 tests.js:645 tests.js:655 tests.js:661 tests.js:668
+msgid "F[o]o is bar"
+msgstr ""
+
+#: tests.js:640
+msgid "Fo[o] is bar"
+msgstr ""
+
+#: tests.js:644
+msgid "Insert after cursor, back to command mode"
+msgstr ""
+
+#: tests.js:651
+msgid "Fo[t]o is bar"
+msgstr ""
+
+#: tests.js:654
+msgid "Ready to append to line"
+msgstr ""
+
+#: tests.js:657
+msgid "Foo is bar[ ]"
+msgstr ""
+
+#: tests.js:660
+msgid "Append to line"
+msgstr ""
+
+#: tests.js:664
+msgid "Foo is barista[ ]"
+msgstr ""
+
+#: tests.js:667
+msgid "Append to line, last space is removed"
+msgstr ""
+
+#: tests.js:672
+msgid "Foo is barist[a]"
+msgstr ""
+
+#: tests.js:675
+msgid "Join two lines"
+msgstr ""
+
+#: tests.js:676
+msgid "Fl[o]oba|Bar"
+msgstr ""
+
+#: tests.js:678
+msgid "Flooba[ ]Bar"
+msgstr ""
+
+#: tests.js:681
+msgid "Yank current line and paste it below"
+msgstr ""
+
+#: tests.js:682 tests.js:689
+msgid "Foo[b]ar|Another"
+msgstr ""
+
+#: tests.js:685
+msgid "Foobar|[F]oobar|Another"
+msgstr ""
+
+#: tests.js:688
+msgid "Yank current line and paste it twice below"
+msgstr ""
+
+#: tests.js:692
+msgid "Foobar|Foobar|[F]oobar|Another"
+msgstr ""
+
+#: tests.js:695
+msgid "Search next occurrence of a word under cursor"
+msgstr ""
+
+#: tests.js:696
+msgid "Here is a wo[r]d that is searched word is."
+msgstr ""
+
+#: tests.js:698
+msgid "Here is a word that is searched [w]ord is."
+msgstr ""
+
+#: tests.js:701
+msgid ""
+"Searching a next word starts from beginning of buffer if not found at the "
+"end"
+msgstr ""
+
+#: tests.js:702
+msgid "A rabbit goes down a rabb[i]t hole."
+msgstr ""
+
+#: tests.js:704
+msgid "A [r]abbit goes down a rabbit hole."
+msgstr ""
+
+#: tests.js:707
+msgid "Searching a next word goes right"
+msgstr ""
+
+#: tests.js:708
+msgid "A rabbit goes rabbit down a rabb[i]t hole."
+msgstr ""
+
+#: tests.js:710
+msgid "A [r]abbit goes rabbit down a rabbit hole."
+msgstr ""
+
+#: tests.js:713
+msgid "Search previous occurrence of a word under cursor"
+msgstr ""
+
+#: tests.js:714
+msgid "Here is a word that is searched w[o]rd is."
+msgstr ""
+
+#: tests.js:716
+msgid "Here is a [w]ord that is searched word is."
+msgstr ""
+
+#: tests.js:719
+msgid ""
+"Searching a previous word starts from end of buffer if not found at the "
+"start"
+msgstr ""
+
+#: tests.js:720
+msgid "A rabb[i]t goes down a rabbit hole."
+msgstr ""
+
+#: tests.js:722
+msgid "A rabbit goes down a [r]abbit hole."
+msgstr ""
+
+#: tests.js:725
+msgid "Searching a previous word goes left"
+msgstr ""
+
+#: tests.js:726
+msgid "A rabb[i]t goes down rabbit a rabbit hole."
+msgstr ""
+
+#: tests.js:728
+msgid "A rabbit goes down rabbit a [r]abbit hole."
+msgstr ""
+
+#: testview.js:99
+msgid "Failed tests: "
+msgstr ""
+
+#: testview.js:100
+msgid "Succeeded tests: "
+msgstr ""
+
+#: testview.js:101
+msgid "Run tests total: "
+msgstr ""
