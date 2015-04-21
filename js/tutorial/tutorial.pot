@@ -1,0 +1,498 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2015-04-21 12:27:+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+
+#: sections.js:4
+msgid "Press enter to continue."
+msgstr ""
+
+#: sections.js:78
+msgid "Introduction"
+msgstr ""
+
+#: sections.js:81
+msgid "Hello."
+msgstr ""
+
+#: sections.js:82
+msgid "I am an interactive |Vim| tutorial."
+msgstr ""
+
+#: sections.js:83
+msgid ""
+"I'll teach you what Vim is about without hassle. If you are in a hurry, "
+"press any key to fast forward."
+msgstr ""
+
+#: sections.js:84
+msgid ""
+"To practice what you've learned, try out the |practice| page. It has a "
+"context sensitive reference for commands."
+msgstr ""
+
+#: sections.js:85
+msgid "Now, let me introduce you to basics of Vim."
+msgstr ""
+
+#: sections.js:88
+msgid "Two modes, insert and normal"
+msgstr ""
+
+#: sections.js:91
+msgid ""
+"Vim has two basic modes. One is |insert| mode, in which you write text as "
+"if in normal text editor."
+msgstr ""
+
+#: sections.js:92
+msgid ""
+"Another is |normal| mode which provides you efficient ways to navigate and "
+"manipulate text."
+msgstr ""
+
+#: sections.js:93
+msgid ""
+"At any time, you can see which mode you are in on the status bar which is "
+"located at the top of the editor."
+msgstr ""
+
+#: sections.js:94
+msgid "To change between modes, use |Esc| for normal mode and |i| for insert mode"
+msgstr ""
+
+#: sections.js:95
+msgid "Let's try it out! First, change to insert mode."
+msgstr ""
+
+#: sections.js:103
+msgid ""
+"Good, now you're in insert mode. Write something and change back to normal "
+"mode."
+msgstr ""
+
+#: sections.js:108
+msgid "Good. Let's move on to another section."
+msgstr ""
+
+#: sections.js:116
+msgid "Basic movement: h, j, k, and l"
+msgstr ""
+
+#: sections.js:119
+msgid ""
+"In contrast to regular text editor, you use keys |h|, |j|, |k|, and |l| "
+"instead of arrow keys to move the cursor."
+msgstr ""
+
+#: sections.js:120
+msgid "Let's see how it works in practice!"
+msgstr ""
+
+#: sections.js:126
+msgid "Let's move on."
+msgstr ""
+
+#: sections.js:131
+msgid "Word movement: w, e, b"
+msgstr ""
+
+#: sections.js:134
+msgid ""
+"To navigate the text in terms of words, you can use keys |w|, |b|, and |e| "
+"(also W, B, E in real Vim)."
+msgstr ""
+
+#: sections.js:135
+msgid ""
+"|w| moves to the start of next word; |e| moves to the end of the word; and "
+"|b| moves to beginning of the word."
+msgstr ""
+
+#: sections.js:141
+msgid "Word! Let's move on."
+msgstr ""
+
+#: sections.js:146
+msgid "Number powered movement, e.g. 5w"
+msgstr ""
+
+#: sections.js:149
+msgid ""
+"Moving within the text is not limited to individual keys; you can combine "
+"movement keys with a |number|. For example, |3w| is the same as pressing w "
+"three times."
+msgstr ""
+
+#: sections.js:155
+msgid "With numbers, ain't no numbness."
+msgstr ""
+
+#: sections.js:161
+msgid "Insert text repeatedly, e.g. 3iYes"
+msgstr ""
+
+#: sections.js:164
+msgid "You can insert text multiple times."
+msgstr ""
+
+#: sections.js:165
+msgid "For example, an underline of a header might consist of 30 |-|s."
+msgstr ""
+
+#: sections.js:167
+msgid "With |30i-| |Esc|, there's no need to press |-| 30 times."
+msgstr ""
+
+#: sections.js:168
+msgid "Let's try it out: insert |go| three times."
+msgstr ""
+
+#: sections.js:174
+msgid "See? 10iAll work is only playEsc."
+msgstr ""
+
+#: sections.js:179
+msgid "Find a character, f and F"
+msgstr ""
+
+#: sections.js:182
+msgid ""
+"To find and move to the next (or previous) occurrence of a character, use "
+"|f| and |F|, e.g. |fo| finds next o."
+msgstr ""
+
+#: sections.js:183
+msgid ""
+"You can combine f with a number. For example, you can find 3rd occurrence "
+"of 'q' with |3fq|, que?"
+msgstr ""
+
+#: sections.js:189
+msgid "F-f-f-ast!"
+msgstr ""
+
+#: sections.js:194
+msgid "Go to matching parentheses, %"
+msgstr ""
+
+#: sections.js:197
+msgid ""
+"In text that is structured with parentheses or brackets, |(| or |{| or |[|, "
+"use |%| to jump to the matching parenthesis or bracket."
+msgstr ""
+
+#: sections.js:198
+msgid "Here is (a sample) text to try that."
+msgstr ""
+
+#: sections.js:206
+msgid "Go to start/end of line, 0 and $"
+msgstr ""
+
+#: sections.js:209
+msgid "To reach the beginning of a line, press |0|."
+msgstr ""
+
+#: sections.js:210
+msgid "For the end of a line, there's |$|"
+msgstr ""
+
+#: sections.js:217
+msgid "Find word under cursor, * and #"
+msgstr ""
+
+#: sections.js:220
+msgid ""
+"Find the next occurrence of the word under cursor with |*|, and the "
+"previous with |#|."
+msgstr ""
+
+#: sections.js:227
+msgid "Nothing new under the cursor."
+msgstr ""
+
+#: sections.js:231
+msgid "Goto line, g and G"
+msgstr ""
+
+#: sections.js:234
+msgid "|gg| takes you to the beginning of the file; |G| to the end."
+msgstr ""
+
+#: sections.js:235
+msgid "To jump directly to a specific line, give its |line number| along with |G|."
+msgstr ""
+
+#: sections.js:236
+msgid ""
+"Now go to the beginning of this screen with |gg| and then back to end with "
+"|G|."
+msgstr ""
+
+#: sections.js:242
+msgid "Go to line 2 with 2G."
+msgstr ""
+
+#: sections.js:246
+msgid "gg! G majorly rocks."
+msgstr ""
+
+#: sections.js:251
+msgid "Search, /text with n and N"
+msgstr ""
+
+#: sections.js:254
+msgid ""
+"Searching text is a vital part of any text editor. In Vim, you press |/|, "
+"and give the text you are looking for."
+msgstr ""
+
+#: sections.js:255
+msgid ""
+"You can repeat the search for next and previous occurrences with |n| and "
+"|N|, respectively."
+msgstr ""
+
+#: sections.js:256
+msgid ""
+"For advanced use cases, it's possible to use regexps that help to find text "
+"of particular form (In real Vim)."
+msgstr ""
+
+#: sections.js:257
+msgid "Let's try a simple text search."
+msgstr ""
+
+#: sections.js:258
+msgid "Search for |text| and find the subsequent matches with |n|."
+msgstr ""
+
+#: sections.js:268
+msgid "Slash through the needless with /n/e/e/d/l/e/s"
+msgstr ""
+
+#: sections.js:274
+msgid "Removing a character, x and X"
+msgstr ""
+
+#: sections.js:277
+msgid ""
+"|x| and |X| delete the character under the cursor and to the left of the "
+"cursor, respectively"
+msgstr ""
+
+#: sections.js:278
+msgid "Try pressing |x| to remove the last word."
+msgstr ""
+
+#: sections.js:284
+msgid "Sometimes the treasure is the indicator (x)."
+msgstr ""
+
+#: sections.js:296
+msgid "Replacing letter under cursor, r"
+msgstr ""
+
+#: sections.js:299
+msgid ""
+"When you need to replace only one character under your cursor, without "
+"changing to insert mode, use |r|."
+msgstr ""
+
+#: sections.js:300
+msgid "Replace my"
+msgstr ""
+
+#: sections.js:318
+msgid "Insert new line, o and O"
+msgstr ""
+
+#: sections.js:321
+msgid "To insert text into a new line, press |o| or |O|"
+msgstr ""
+
+#: sections.js:322
+msgid "After new line is created, the editor is set to |insert| mode."
+msgstr ""
+
+#: sections.js:323
+msgid "Write a bit and get back to |normal| mode."
+msgstr ""
+
+#: sections.js:333
+msgid "Yep! Now big O to insert new line above the current line."
+msgstr ""
+
+#: sections.js:339
+msgid "I bet you feel like O___o"
+msgstr ""
+
+#: sections.js:345
+msgid "Deleting, d"
+msgstr ""
+
+#: sections.js:348
+msgid "|d| is the delete command"
+msgstr ""
+
+#: sections.js:349
+msgid ""
+"You can combine it with movement, e.g. |dw| deletes the first word on the "
+"right side of the cursor"
+msgstr ""
+
+#: sections.js:350
+msgid ""
+"It also copies the content, so that you can paste it with |p| to another "
+"location (on real Vim)."
+msgstr ""
+
+#: sections.js:357
+msgid "The word is gone. Now let's remove two words with d2e."
+msgstr ""
+
+#: sections.js:362
+msgid "To 'de' or not to 'de', is not the question, anymore."
+msgstr ""
+
+#: sections.js:367
+msgid "Repetition with ."
+msgstr ""
+
+#: sections.js:370
+msgid "To repeat the previous command, just press |.|"
+msgstr ""
+
+#: sections.js:371
+msgid "First, remove two words with |d2w|."
+msgstr ""
+
+#: sections.js:372
+msgid "After that, remove the rest of the words in this line with |.|"
+msgstr ""
+
+#: sections.js:381
+msgid "Repetition is the root of all periods."
+msgstr ""
+
+#: sections.js:387
+msgid "Visual mode, v"
+msgstr ""
+
+#: sections.js:390
+msgid "Besides insert and normal mode, Vim has also |visual| mode."
+msgstr ""
+
+#: sections.js:391
+msgid ""
+"In visual mode, you select text using movement keys before you decide what "
+"to do with it."
+msgstr ""
+
+#: sections.js:392
+msgid ""
+"Let's see how. Goto visual mode with |v|. Then select a word with |e|. "
+"After you've selected the text, you can delete it with |d|."
+msgstr ""
+
+#: sections.js:393
+msgid "This sentence has not seen the light."
+msgstr ""
+
+#: sections.js:400
+msgid "(Visually gifted, I lost my words.)"
+msgstr ""
+
+#: sections.js:404
+msgid "Visual block mode, ctrl-v"
+msgstr ""
+
+#: sections.js:407
+msgid ""
+"There is yet another mode: |visual block|. This makes it possible to insert "
+"text on many lines at once. Let's see how with an example list."
+msgstr ""
+
+#: sections.js:408
+msgid "<> A smart girl"
+msgstr ""
+
+#: sections.js:409
+msgid "<> Ulysses"
+msgstr ""
+
+#: sections.js:410
+msgid "<> Learn and teach"
+msgstr ""
+
+#: sections.js:411
+msgid ""
+"First, move cursor to insert position. Then press |ctrl-v| to go into "
+"visual block mode. Move cursor vertically to select lines. Now press |I|, "
+"and prepend text to the selected area. |Esc| completes the insertion."
+msgstr ""
+
+#: sections.js:417
+msgid "Blocks are obstacles for making progress."
+msgstr ""
+
+#: sections.js:421
+msgid "Real Vim awaits"
+msgstr ""
+
+#: sections.js:424
+msgid "Now you should be quite confident to enter the real Vim."
+msgstr ""
+
+#: sections.js:425
+msgid ""
+"Most important commands to remember are |:w| (save), |:q| (quit), and |:q!| "
+"(quit without saving)."
+msgstr ""
+
+#: sections.js:426
+msgid ""
+"Also don't |PANIC!| If you make a mistake, press |u| for undo and |ctrl+R| "
+"for redo"
+msgstr ""
+
+#: sections.js:427
+msgid ""
+"If you have a problem, or want to learn more about what Vim offers, type "
+"|:help|"
+msgstr ""
+
+#: sections.js:432
+msgid "The end"
+msgstr ""
+
+#: sections.js:434
+msgid "Thank you for your time."
+msgstr ""
+
+#: sections.js:435
+msgid ""
+"This tutorial is still in progress; minor changes might occur daily. I am "
+"also developing other features/concepts."
+msgstr ""
+
+#: sections.js:436
+msgid ""
+"Feel encouraged to send greetings or feedback to: "
+"henrik|.|huttunen|@|gmail|.|com"
+msgstr ""
+
+#: tutorial_engine.js:33
+msgid "Press "
+msgstr ""
+
+#: tutorial_engine.js:33
+msgid " to show command: "
+msgstr ""
