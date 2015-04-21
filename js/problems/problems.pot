@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2015-04-20 06:27:+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+
+#: problems.js:16 problems.js:19 problems.js:22 problems.js:25
+msgid "[H]ello! My name is Peter."
+msgstr ""
+
+#: problems.js:17
+msgid "Hello! My name is [P]eter."
+msgstr ""
+
+#: problems.js:20
+msgid "Hello! My name is [R]andall."
+msgstr ""
+
+#: problems.js:23
+msgid "Hello, Randall."
+msgstr ""
+
+#: problems.js:26
+msgid "[H]ello! My call name is Pete."
+msgstr ""
