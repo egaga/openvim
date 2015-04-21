@@ -1,0 +1,202 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2015-04-21 12:37:+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+
+#: context_help.js:28
+msgid "change to normal mode"
+msgstr ""
+
+#: context_help.js:29
+msgid "change to insert mode"
+msgstr ""
+
+#: context_help.js:30
+msgid "move left, down, up, right"
+msgstr ""
+
+#: context_help.js:31
+msgid "move word at a time"
+msgstr ""
+
+#: context_help.js:32
+msgid "[n][action/movement]"
+msgstr ""
+
+#: context_help.js:32
+msgid "do n times, e.g. 3w"
+msgstr ""
+
+#: context_help.js:33
+msgid "remove a character"
+msgstr ""
+
+#: context_help.js:34
+msgid "append"
+msgstr ""
+
+#: context_help.js:35 context_help.js:38
+msgid "f[char]"
+msgstr ""
+
+#: context_help.js:35
+msgid "move to next given char in line"
+msgstr ""
+
+#: context_help.js:36
+msgid "F[char]"
+msgstr ""
+
+#: context_help.js:36
+msgid "move to previous char in line"
+msgstr ""
+
+#: context_help.js:37
+msgid "; and ,"
+msgstr ""
+
+#: context_help.js:37
+msgid "repeat last f or F"
+msgstr ""
+
+#: context_help.js:38
+msgid "move to n:th next given char in line"
+msgstr ""
+
+#: context_help.js:39
+msgid "/yourtext and then: n, N"
+msgstr ""
+
+#: context_help.js:39
+msgid "Search text"
+msgstr ""
+
+#: context_help.js:40
+msgid "d[movement]"
+msgstr ""
+
+#: context_help.js:40
+msgid "delete by giving movement"
+msgstr ""
+
+#: context_help.js:41
+msgid "r[char]"
+msgstr ""
+
+#: context_help.js:41
+msgid "replaces character below cursor"
+msgstr ""
+
+#: context_help.js:42
+msgid "move to start/end of line"
+msgstr ""
+
+#: context_help.js:43
+msgid "add new line"
+msgstr ""
+
+#: context_help.js:44
+msgid "Goto corresponding parentheses"
+msgstr ""
+
+#: context_help.js:46
+msgid "ci[movement]"
+msgstr ""
+
+#: context_help.js:46
+msgid "change inside of given movement"
+msgstr ""
+
+#: context_help.js:47
+msgid "delete to end of line"
+msgstr ""
+
+#: context_help.js:48
+msgid "clear current line; to insert mode"
+msgstr ""
+
+#: context_help.js:49
+msgid "move to the start of buffer"
+msgstr ""
+
+#: context_help.js:50
+msgid "move to end of previous word"
+msgstr ""
+
+#: context_help.js:51
+msgid "move to start / end of buffer"
+msgstr ""
+
+#: context_help.js:52
+msgid "move to line"
+msgstr ""
+
+#: context_help.js:53
+msgid "the whole line"
+msgstr ""
+
+#: context_help.js:54
+msgid "the rest of the line"
+msgstr ""
+
+#: context_help.js:55
+msgid "the beginning of line to here"
+msgstr ""
+
+#: context_help.js:56
+msgid "to the beginning of next word"
+msgstr ""
+
+#: context_help.js:57
+msgid "to the end of current word"
+msgstr ""
+
+#: context_help.js:58
+msgid "to the beginning of current word"
+msgstr ""
+
+#: context_help.js:59
+msgid "left, down, up, right"
+msgstr ""
+
+#: context_help.js:60
+msgid "movement n times"
+msgstr ""
+
+#: context_help.js:61
+msgid "single character"
+msgstr ""
+
+#: context_help.js:62
+msgid "movement, e.g. j"
+msgstr ""
+
+#: context_help.js:63 context_help.js:64
+msgid "copy current line"
+msgstr ""
+
+#: context_help.js:65
+msgid "Paste copied text after cursor."
+msgstr ""
+
+#: context_help.js:66
+msgid "Repeats inserted text"
+msgstr ""
+
+#: context_help.js:67
+msgid "cancel action/movement"
+msgstr ""
+
+#: view.js:23
+msgid "mode: COMMAND"
+msgstr ""
+
+#: view.js:29
+msgid "mode: INSERT"
+msgstr ""
