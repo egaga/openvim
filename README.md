@@ -4,7 +4,7 @@ Interactive tutorial for Vim.
 ## What is OpenVim?
 
 OpenVim is a web-based project to let people quickly have a taste what kind of an editor Vim is.
-Motivation comes from the fact that Vim is very useful but the learning curve is devastating.
+Vim is considered to be very useful but can feel devastatingly opaque at first. Hopefully this tutorial makes people feel more comfortable to give it a chance.
 
 OpenVim is based on a custom engine that interprets vim commands. 
 Fun fact: the engine operates directly on the dom but can be easily refactored to a model that is not view-dependent.
