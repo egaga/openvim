@@ -73,12 +73,13 @@ function create_VIM_EVENTLISTENER(interpret, environment, messager, isActiveCont
   }
 
   function stopImmediatePropagation(event) {
+    event.preventDefault();
     event.stopImmediatePropagation();
   }
-  
+
   $(function() {
     bindBasicCommandModeKeys();
     bindSpecial();
     bindMouse();
   });
-} 
+}
