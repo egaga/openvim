@@ -265,7 +265,7 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
           cmd("Enter",
             function() {
               interpreter.interpretSequence(["/", "Esc"]);
-              insertText("Slash through the needless with /n/e/e/d/l/e/s");
+              insertText("Slash through the needles with /n/e/e/d/l/e/s");
             }),
           "Enter"], accepterCreator
         )
