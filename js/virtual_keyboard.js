@@ -20,9 +20,10 @@ function create_VIM_VIRTUAL_KEYBOARD() {
     configurationKey('3d', 'toggle_3d_keyboard'),
     configurationKey('Screen brightness', 'toggle_screen_brightness'),
     configurationKey('Keyboard size', 'toggle_keyboard_size') ];
-  var numberRow = ['hid', '1', '2',
+  var numberRow = ['hid', two('1', '!'), two('2', '"'),
     two('3', '#'), two('4', '$'), two('5', '%'),
-    '4', '5', '6', '7', '8', '9', '0'];
+    two('6', '&'), two('7', '/'), two('8', '('), 
+    two('9', ')'), two('0', '=')];
   var tabRow = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', {key: 'Backspace', label: '<='}];
   var capslockRow = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '*', 'Enter'];
   var shiftRow = ['shift', two('>', '<'), 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
