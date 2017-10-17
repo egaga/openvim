@@ -8,6 +8,15 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
   function sendMessageAsync(message) { setTimeout(function() { messager.sendMessage(message); }, 0); }
   
   function requireEnterToContinue() { showCommandOneByOne(["Enter"], accepterCreator); }
+  function requireEnterToGotoPractice() {
+      messager.sendMessage('waiting_for_code', { 'end': false, 'code': 'Enter' });
+      var forAbortId = messager.listenTo('pressed_key', function (key) {
+          if (key === 13) { // Enter
+              window.location = 'sandbox.html';
+              messager.removeListener('pressed_key', forAbortId);
+          }
+      });
+  }
 
   function defaultPre() { interpreter.environment.setInsertMode(); }
 
@@ -15,13 +24,6 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
     interpreter.environment.setCommandMode();
     showInfo(pressEnterToContinue);
     requireEnterToContinue();
-  }
-
-  function wait_for_abort() {
-    messager.listenTo('abort_section', function() { // XXX: this will linger if no abort_section is done
-      sendMessageAsync('tutorial_next_section');
-      return messager.REMOVE_THIS_LISTENER;
-    });
   }
 
   /** FIXME: should reuse existing code/key functionality */
@@ -431,10 +433,10 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
 
   var the_end = createSection("The end", defaultPre,
       [
-        "Thank you for your time.",
-        "This tutorial is still in progress; minor changes might occur daily. I am also developing other features/concepts.",
-        "Feel encouraged to send greetings or feedback to: henrik|.|huttunen|@|gmail|.|com"
-      ], wait_for_abort);
+        "Thank you for your time. I hope you enjoyed.",
+        "Press |enter| if you want to test out the commands freely in the practice editor.",
+        "Bye!"
+      ], requireEnterToGotoPractice);
 
   // append a and A
   // J join lines
