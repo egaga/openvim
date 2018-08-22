@@ -64,6 +64,8 @@ function init_tutorial() {
       }
     });
 
+    updateModifierKeys();
+
     var tutorial = createTutorial($(this), interpreter, messager, doc);
     register_VIM_TUTORIAL_SECTIONS(interpreter, messager,
                                    tutorial.createSection, tutorial.registerSection, tutorial.showCommandOneByOne, doc);
@@ -74,4 +76,8 @@ function init_tutorial() {
       $(this).closest('.section_menu').toggleClass('shrinkMenu');
     });
   });
+}
+
+function updateModifierKeys() {
+  $(".keyButton:contains('caps')").css('width', '200px');
 }
