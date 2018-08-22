@@ -25,6 +25,8 @@
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+    font-family: sans-serif;
+    font-size: 14px;
     margin-left: 78px;
     width: 730px;
 }
