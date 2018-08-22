@@ -21,6 +21,10 @@
 }
 
 .keyboard_wrapper {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     margin-left: 78px;
     width: 730px;
 }
