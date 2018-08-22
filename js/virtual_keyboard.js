@@ -38,16 +38,14 @@ function create_VIM_VIRTUAL_KEYBOARD() {
     else if(key.primary !== undefined) {
       var $key = $('<div />', { 'text': (key.primary + " " + key.secondary), 'class': 'keyButton' });
       $key.data('keyboard', key.primary);
-      return $key;
     } else if(key.key !== undefined) {
       var $key = $('<div />', { 'text': key.label, 'class': 'keyButton' });
       $key.data('keyboard', key.key);
-      return $key;
     } else {
       var $key = $('<div />', { 'text': key, 'class': 'keyButton' });
       $key.data('keyboard', key);
-      return $key;
     }
+    return $key;
   }
 
   function createRow(row) {
