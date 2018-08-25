@@ -79,6 +79,12 @@ function init_tutorial() {
 }
 
 function updateModifierKeys() {
-  $(".keyButton:contains('caps')").css('width', '62px');
-  $(".keyButton:contains('Space')").css('width', '355px');
+  addSizeClass('caps', 'medium');
+  addSizeClass('Enter', 'medium');
+  addSizeClass('shift', 'large');
+  addSizeClass('Space', 'space');
+}
+
+function addSizeClass(key, size){
+  $(".keyButton:contains('" + key + "')").addClass(size);
 }

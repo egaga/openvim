@@ -81,6 +81,18 @@
     box-shadow: 2px 2px 2px black;
 }
 
+.keyButton.medium {
+    width: 62px;
+}
+
+.keyButton.large {
+    width: 88px;
+}
+
+.keyButton.space {
+    width: 355px;
+}
+
 .keyButton.pressed_down {
     box-shadow: none;
     background-color: #555 !important;
