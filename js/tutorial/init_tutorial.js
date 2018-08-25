@@ -79,5 +79,6 @@ function init_tutorial() {
 }
 
 function updateModifierKeys() {
-  $(".keyButton:contains('caps')").css('width', '200px');
+  $(".keyButton:contains('caps')").css('width', '62px');
+  $(".keyButton:contains('Space')").css('width', '355px');
 }
