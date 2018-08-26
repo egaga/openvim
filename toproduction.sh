@@ -1,2 +1,2 @@
-cp -R -v *.css *.html *.gif js production
+cp -R -v *.html *.gif css js production
 ./setversion.sh

@@ -26,7 +26,7 @@ function create_VIM_VIRTUAL_KEYBOARD() {
     two('9', ')'), two('0', '=')];
   var tabRow = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', {key: 'Backspace', label: '<='}];
   var capslockRow = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '*', 'Enter'];
-  var shiftRow = ['shift', two('>', '<'), 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.'];
+  var shiftRow = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', two('>', '<')];
   var bottomRow = ['ctrl', 'alt', 'Space'];
 
   function createKeyButton(key) {
@@ -38,16 +38,14 @@ function create_VIM_VIRTUAL_KEYBOARD() {
     else if(key.primary !== undefined) {
       var $key = $('<div />', { 'text': (key.primary + " " + key.secondary), 'class': 'keyButton' });
       $key.data('keyboard', key.primary);
-      return $key;
     } else if(key.key !== undefined) {
       var $key = $('<div />', { 'text': key.label, 'class': 'keyButton' });
       $key.data('keyboard', key.key);
-      return $key;
     } else {
       var $key = $('<div />', { 'text': key, 'class': 'keyButton' });
       $key.data('keyboard', key);
-      return $key;
     }
+    return $key;
   }
 
   function createRow(row) {

@@ -21,6 +21,12 @@
 }
 
 .keyboard_wrapper {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-family: sans-serif;
+    font-size: 14px;
     margin-left: 78px;
     width: 730px;
 }
@@ -73,6 +79,18 @@
     height: 25px;
     padding: 10px 5px 3px 5px;
     box-shadow: 2px 2px 2px black;
+}
+
+.keyButton.medium {
+    width: 62px;
+}
+
+.keyButton.large {
+    width: 88px;
+}
+
+.keyButton.space {
+    width: 355px;
 }
 
 .keyButton.pressed_down {
