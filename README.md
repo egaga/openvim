@@ -7,7 +7,7 @@ OpenVim is a web-based project to let people quickly have a taste what kind of a
 Vim is considered to be very useful but can feel devastatingly opaque at first. Hopefully this tutorial makes people feel more comfortable to give it a chance.
 
 OpenVim is based on a custom engine that interprets vim commands. 
-Fun fact: the engine operates directly on the dom but can be easily refactored to a model that is not view-dependent.
+Fun fact: the engine operates directly on the dom but could be easily refactored to a model that is not view-dependent.
 
 ## How to help?
 
@@ -21,4 +21,4 @@ MIT License.
 
 ## Contact
 
-henrik.huttunen@gmail.com or [egaga@twitter](http://twitter.com/egaga)
+henrik.huttunen@gmail.com
