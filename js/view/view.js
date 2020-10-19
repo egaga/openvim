@@ -20,7 +20,7 @@ function create_VIM_VIEW(environment, messager, context) {
 
   function update() {
     if(environment.isCommandMode()) {
-      $('.statustext', context).text("mode: COMMAND");
+      $('.statustext', context).text("mode: NORMAL");
       $('.insert-mode', context).hide();
       $('.command-mode', context).show();
     } else {
