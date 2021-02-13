@@ -8,10 +8,11 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
   function sendMessageAsync(message) { setTimeout(function() { messager.sendMessage(message); }, 0); }
   
   function requireEnterToContinue() { showCommandOneByOne(["Enter"], accepterCreator); }
-  function requireEscToGotoPractice() {
-      messager.sendMessage('waiting_for_code', { 'end': false, 'code': 'Esc' });
+  function waitPressToGotoPractice(waitCode, waitKey) {
+      messager.sendMessage('waiting_for_code', { 'end': false, 'code': waitCode });
       var forAbortId = messager.listenTo('pressed_key', function (key) {
-          if (key === 27) { // Enter
+        console.log("key", key)
+          if (key === waitKey) {
               window.location = 'sandbox.html';
               messager.removeListener('pressed_key', forAbortId);
           }
@@ -434,9 +435,9 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
   var the_end = createSection("The end", defaultPre,
       [
         "Thank you for your time. I hope you enjoyed.",
-        "Press |enter| if you want to test out the commands freely in the practice editor.",
+        "Press |space| if you want to test out the commands freely in the practice editor.",
         "Bye!"
-      ], requireEscToGotoPractice);
+      ], () => waitPressToGotoPractice('Space', 32));
 
   // append a and A
   // J join lines
