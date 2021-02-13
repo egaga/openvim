@@ -214,15 +214,15 @@ h1 {
 .sidebar {
   z-index: 100;
   display: none;
-  height: 600px;
   overflow-y: scroll;
   padding: 10px;
   width: 300px;
   background-color: white;
   color: white; 
   position: fixed;
-  right: 0px;
+  right: 0;
   top: 5px;
+  bottom: 0;
   border-radius: 5px;
   box-shadow: 1px 1px 3px pink;
   -webkit-box-shadow: 1px 1px 3px pink;
