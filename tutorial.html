@@ -17,6 +17,7 @@
   <script type="text/Javascript" src="js/engine/document.js?version={VERSION}"></script>
   <script type="text/Javascript" src="js/view/comparison.js?version={VERSION}"></script>
   <script type="text/Javascript" src="js/view/context_help.js?version={VERSION}"></script>
+  <script type="text/javascript" src="./keyboard_configs.json?version={VERSION}"></script>
 
   <!-- VIM specific parts -->
   <script type="text/Javascript" src="js/engine/executor.js?version={VERSION}"></script>
@@ -38,8 +39,14 @@
   <script type="text/javascript">
     google.load("jquery", "1.6.4");
 
+    const urlParams = new URLSearchParams(window.location.search);
+
     google.setOnLoadCallback(function() {
-        init_tutorial();
+        if (urlParams.has('type')) {
+            init_tutorial(urlParams.get('type'));
+        } else {
+            init_tutorial();
+        }
     });
   </script>
 
@@ -64,7 +71,7 @@
     <!--
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.openvim.com/tutorial.html" data-text="OpenVim - Interactive Vim tutorial" data-count="horizontal" data-via="egaga">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
     -->
-    <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
+      <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
   </div>
 
   <div class="screen_view">
