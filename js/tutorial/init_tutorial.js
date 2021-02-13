@@ -1,4 +1,4 @@
-function init_tutorial(keyboardType = 'qwerty') {
+function init_tutorial(keyboardLayout = 'qwerty') {
   $('.screen_view').each(function() {
     var G = VIM_GENERIC;
     
@@ -23,7 +23,7 @@ function init_tutorial(keyboardType = 'qwerty') {
     create_VIM_EVENTLISTENER(interpreter.interpretOneCommand, interpreter.environment, messager, isActiveContext);
     create_VIM_CURSOR_BLINKING(context, 700, messager).blink();
 
-    var keyboard = create_VIM_VIRTUAL_KEYBOARD(keyboardType);
+    var keyboard = create_VIM_VIRTUAL_KEYBOARD(keyboardLayout);
     $('.keyboard_wrapper').append(keyboard.keyboardAsDom);
 
     create_VIM_BLINKING('waiting_to_be_pressed', keyboard.keyboardAsDom, 500, messager).blink();

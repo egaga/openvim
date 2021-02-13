@@ -1,5 +1,7 @@
-function create_VIM_VIRTUAL_KEYBOARD(type) {
-  const KEYBOARD_TYPES = ['qwerty', 'dvorak'];
+function create_VIM_VIRTUAL_KEYBOARD(layout) {
+  const KEYBOARD_LAYOUTS = ['qwerty', 'dvorak'];
+  layout = KEYBOARD_LAYOUTS.find(x => x === layout.toLowerCase()) || KEYBOARD_LAYOUTS[0];
+
   var G = VIM_GENERIC;
   let escRow;
   let numberRow;
@@ -8,11 +10,6 @@ function create_VIM_VIRTUAL_KEYBOARD(type) {
   let shiftRow;
   let bottomRow;
   let keyboardAsDom;
-
-  if (KEYBOARD_TYPES.indexOf(type) === -1) {
-    type = 'qwerty';
-  }
-  let keyboardType = KEYBOARD_TYPES[KEYBOARD_TYPES.indexOf(type.toLowerCase())];
 
   function two(primary, secondary) {
     return {
@@ -31,6 +28,7 @@ function create_VIM_VIRTUAL_KEYBOARD(type) {
 
   setKeyLayout();
 
+   // TODO setKeyLayout to a separate file that returns properties for each keyboard layout
   function setKeyLayout() {
     escRow = ["Esc", 'hid', 'hid', 'hid', 'hid', 'hid', 'hid',
       configurationKey('3d', 'toggle_3d_keyboard'),
@@ -42,12 +40,12 @@ function create_VIM_VIRTUAL_KEYBOARD(type) {
       two('9', ')'), two('0', '=')];
 
     // TODO: replace this with the ability to load configs from file
-    if (keyboardType.toLowerCase() === 'qwerty') {
+    if (layout === 'qwerty') {
       tabRow = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', {key: 'Backspace', label: '<='}];
       capslockRow = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '*', 'Enter'];
       shiftRow = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', two('>', '<')];
       bottomRow = ['ctrl', 'alt', 'Space'];
-    } else if (keyboardType.toLowerCase() === 'dvorak') {
+    } else if (layout === 'dvorak') {
       tabRow = ['tab', {primary: ',', secondary: '<'}, {primary: '.', secondary: '>'}, 'p', 'y', 'f', 'u', 'g', 'c', 'r', 'l', {key: 'Backspace', label: '<='}];
       capslockRow = ['caps', 'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', {primary: 's', secondary: '*'}, 'Enter'];
       shiftRow = ['shift', ';', 'q', 'j', 'k', 'x', 'b', 'm', 'w', 'v', 'z'];

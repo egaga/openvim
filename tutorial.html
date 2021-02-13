@@ -40,9 +40,9 @@
 
     const urlParams = new URLSearchParams(window.location.search);
 
-    google.setOnLoadCallback(function() {
-        if (urlParams.has('type')) {
-            init_tutorial(urlParams.get('type'));
+    google.setOnLoadCallback(function() {  
+        if (urlParams.has('layout')) {
+            init_tutorial(urlParams.get('layout'));
         } else {
             init_tutorial();
         }
