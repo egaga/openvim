@@ -1,5 +1,15 @@
-function create_VIM_VIRTUAL_KEYBOARD() {
+function create_VIM_VIRTUAL_KEYBOARD(layout) {
+  const KEYBOARD_LAYOUTS = ['qwerty', 'dvorak'];
+  layout = KEYBOARD_LAYOUTS.find(x => x === layout.toLowerCase()) || KEYBOARD_LAYOUTS[0];
+
   var G = VIM_GENERIC;
+  let escRow;
+  let numberRow;
+  let tabRow;
+  let capslockRow;
+  let shiftRow;
+  let bottomRow;
+  let keyboardAsDom;
 
   function two(primary, secondary) {
     return {
@@ -16,18 +26,35 @@ function create_VIM_VIRTUAL_KEYBOARD() {
     }
   }
 
-  var escRow = ["Esc", 'hid', 'hid', 'hid', 'hid', 'hid', 'hid',
-    configurationKey('3d', 'toggle_3d_keyboard'),
-    configurationKey('Screen brightness', 'toggle_screen_brightness'),
-    configurationKey('Keyboard size', 'toggle_keyboard_size') ];
-  var numberRow = ['hid', two('1', '!'), two('2', '"'),
-    two('3', '#'), two('4', '$'), two('5', '%'),
-    two('6', '&'), two('7', '/'), two('8', '('), 
-    two('9', ')'), two('0', '=')];
-  var tabRow = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', {key: 'Backspace', label: '<='}];
-  var capslockRow = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '*', 'Enter'];
-  var shiftRow = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', two('>', '<')];
-  var bottomRow = ['ctrl', 'alt', 'Space'];
+  setKeyLayout();
+
+   // TODO setKeyLayout to a separate file that returns properties for each keyboard layout
+  function setKeyLayout() {
+    escRow = ["Esc", 'hid', 'hid', 'hid', 'hid', 'hid', 'hid',
+      configurationKey('3d', 'toggle_3d_keyboard'),
+      configurationKey('Screen brightness', 'toggle_screen_brightness'),
+      configurationKey('Keyboard size', 'toggle_keyboard_size') ];
+    numberRow = ['hid', two('1', '!'), two('2', '"'),
+      two('3', '#'), two('4', '$'), two('5', '%'),
+      two('6', '&'), two('7', '/'), two('8', '('),
+      two('9', ')'), two('0', '=')];
+
+    // TODO: replace this with the ability to load configs from file
+    if (layout === 'qwerty') {
+      tabRow = ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', {key: 'Backspace', label: '<='}];
+      capslockRow = ['caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '*', 'Enter'];
+      shiftRow = ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', two('>', '<')];
+      bottomRow = ['ctrl', 'alt', 'Space'];
+    } else if (layout === 'dvorak') {
+      tabRow = ['tab', {primary: ',', secondary: '<'}, {primary: '.', secondary: '>'}, 'p', 'y', 'f', 'u', 'g', 'c', 'r', 'l', {key: 'Backspace', label: '<='}];
+      capslockRow = ['caps', 'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', {primary: 's', secondary: '*'}, 'Enter'];
+      shiftRow = ['shift', ';', 'q', 'j', 'k', 'x', 'b', 'm', 'w', 'v', 'z'];
+      bottomRow = ['ctrl', 'alt', 'Space'];
+    }
+    keyboardAsDom = createKeyboard(
+        [escRow, numberRow, tabRow, capslockRow, shiftRow, bottomRow]
+    );
+  }
 
   function createKeyButton(key) {
     //TODO: refactor common functionality
@@ -92,10 +119,6 @@ function create_VIM_VIRTUAL_KEYBOARD() {
       $('.screen_view').toggleClass('view_3d');
     });
   }
-
-  var keyboardAsDom = createKeyboard(
-      [escRow, numberRow, tabRow, capslockRow, shiftRow, bottomRow]
-  );
 
   function getKeyButtonByKey(key) {
     return keyboardAsDom.find('.keyButton').filter(function() {
