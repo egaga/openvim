@@ -11,7 +11,7 @@
 }
 
 .screen_view {
-    margin-left: 100px;
+    margin: 0 auto;
 }
 
 .screen_view.view_3d .keyboard_wrapper {

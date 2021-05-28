@@ -27,17 +27,20 @@
 }
 
 .section_menu {
-    overflow-y: scroll;
-    width: 340px;
-    z-index: 1000;
+    height: 100%;
+    width: 0;
     position: fixed;
-    right: 0;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: 0.5s;
+
+    overflow-y: scroll;
     top: 0;
-    bottom: 0;
+    left: 0;
     background-color: white;
-    border: 2px solid #555555;
+    /* border: 2px solid #555555; */
     border-bottom-left-radius: 1em;
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 .section_menu_item {
@@ -79,10 +82,19 @@
 
 .section_menu .headline {
     float: left;
-    width: 250px;
+    width: 150px;
     font-size: 1.3em !important;
     color: black;
     padding-bottom: 3px;
     margin-bottom: 5px;
     border-bottom: 1px solid #555;
 }
+.closebtn {
+    color: black;
+    font-size: 25px;
+    background-color: #eee;
+    padding: 0 5px;
+    float: right;
+    margin:  5px;
+    cursor: pointer;
+  }
