@@ -1,5 +1,5 @@
 # OpenVim
-Interactive tutorial for Vim.
+Interactive tutorial for Vim. Initial version created and published in 2011.
 
 ## What is OpenVim?
 
