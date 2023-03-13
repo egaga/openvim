@@ -234,7 +234,7 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
            (code >= 'a' && code <= 'z') || 
            (code >= 'A' && code <= 'Z') ||
            G.existsIn(code, [".", '!', '/', '?', '(', ')', '@', '#', '€', '$', '%', '&', '{', '}', '+', '-', '*', '<', '>',
-                             '|', ',', ':', ';', '_', '^', '~', '\"', '£', '½', "'"]));
+                             '|', ',', ':', ';', '_', '^', '~', '\"', '£', '½', "'", '=']));
   }  
   
   function do_chained_action(input) {
