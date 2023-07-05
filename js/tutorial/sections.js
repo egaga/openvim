@@ -138,8 +138,9 @@ function register_VIM_TUTORIAL_SECTIONS(interpreter, messager, createSection, re
         "|w| moves to the start of next word; |e| moves to the end of the word; and |b| moves to beginning of the word."
       ], function() {
         interpreter.environment.setCommandMode();
+        interpreter.interpretSequence("Fn"); // cursor to "begin[n]ing"
         showCommandOneByOne([
-          "b", "b", "w", "b", "e", "w",
+          "b", "e", "b", "w", "e", "w", "e", "b",
           cmd("Enter", function() {
             insertText("Word! Let's move on.");
           }), "Enter"],
