@@ -13,8 +13,6 @@ Fun fact: the engine operates directly on the dom but could be easily refactored
 
 If you want to help with actual code, look at the existing GitHub issues. Especially keybindings are hard for me to get right in different environments.
 
-See [Trello board](https://trello.com/board/openvim/4e71135e9dbc8100001b9c5c) for development tasks.
-
 ## License
 
 MIT License.
