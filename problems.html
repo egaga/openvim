@@ -10,7 +10,7 @@
   <title>Interactive Vim tutorial - problems</title>
 
   <!-- GENERAL (mostly) -->
-  <script src=”http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js”></script>
+  <script src=”https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js”></script>
   <!--
   <script type="text/Javascript" src="js/jquery.js"></script>
   -->
@@ -31,19 +31,18 @@
   <script type="text/Javascript" src="js/view/event.js?version={VERSION}"></script>
   <script type="text/Javascript" src="js/problems/init_problems.js?version={VERSION}"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript">
-    google.load("jquery", "1.6.4");
-
-    google.setOnLoadCallback(init_problems);
-  </script>
+      $(document).ready(function () {
+          init_problems();
+      });
+   </script>
 
 </head>
 
 <body>
   <div class="navigation">
     <a href="development.html">Home</a>
-    <a href="tutorial.html">Tutorial</a>
+    <a href="index.html">Tutorial</a>
     <a href="problems.html" class="selected">Problems</a>
     <a href="sandbox.html">Sandbox</a>
     <a href="twosandboxes.html">Two sandboxes</a>

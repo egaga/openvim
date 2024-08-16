@@ -24,4 +24,3 @@
 - documentation could be hosted on a site. two column panel would have the documentable item on the left and on the right there could be live demo how it works
 - vimtask: column based tasklist like trello.com but with vim commands
 - vim dropping paragraphs, tetrislike, action takes time, so faster with 2d
-http://twitter.github.com/bootstrap

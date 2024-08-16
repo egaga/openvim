@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="css/virtual_keyboard.css?version={VERSION}" />
   <link rel="icon" type="image/png" href="icon.png" />
 
-  <title>Interactive Vim tutorial</title>
+  <title>OpenVim - Interactive Vim tutorial</title>
 
   <!-- GENERAL (mostly) -->
   <script type="text/Javascript" src="js/engine/messager.js?version={VERSION}"></script>
@@ -35,13 +35,12 @@
 
   <script type="text/Javascript" src="js/tutorial/init_tutorial.js?version={VERSION}"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-    google.load("jquery", "1.6.4");
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
+  <script type="text/javascript">
     const urlParams = new URLSearchParams(window.location.search);
 
-    google.setOnLoadCallback(function () {
+    $(document).ready(function () {
       if (urlParams.has('layout')) {
         init_tutorial(urlParams.get('layout'));
       } else {
@@ -57,7 +56,7 @@
 
     <div class="navigation">
       <span style="font-size:25px; cursor:pointer; color: white; margin: 0 10px;" onclick="openNav()">&#9776;</span>
-      <a href="tutorial.html" class="selected">Tutorial</a>
+      <a href="index.html" class="selected">Tutorial</a>
       <a href="sandbox.html">Practice</a>
       <a href="development.html">Development</a>
       <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>

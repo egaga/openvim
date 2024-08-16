@@ -6,7 +6,7 @@
   <link rel="stylesheet" type="text/css" href="css/css.css?version={VERSION}" />
   <link rel="icon" type="image/png" href="icon.png"/>
 
-  <title>Interactive Vim tutorial - sandbox</title>
+  <title>OpenVim - Interactive Vim tutorial - Sandbox</title>
 
   <!-- GENERAL (mostly) -->
   <!--
@@ -31,11 +31,9 @@
   <script type="text/Javascript" src="js/view/event.js?version={VERSION}"></script>
   <script type="text/Javascript" src="js/init.js?version={VERSION}"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript">
-    google.load("jquery", "1.6.4");
-
-    google.setOnLoadCallback(function() {
+    $(document).ready(function () {
         init_vim();
     });
   </script>
@@ -44,7 +42,7 @@
 
 <body>
   <div class="navigation">
-    <a href="tutorial.html">Tutorial</a>
+    <a href="index.html">Tutorial</a>
     <a href="sandbox.html" class="selected">Practice</a>
     <a href="development.html">Development</a>
     <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
