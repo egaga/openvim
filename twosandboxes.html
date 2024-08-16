@@ -29,21 +29,16 @@
   <script type="text/Javascript" src="js/view/event.js?version={VERSION}"></script>
   <script type="text/Javascript" src="js/init.js?version={VERSION}"></script>
 
-  <!--
-  <script type="text/Javascript" src="js/jquery.js"></script>
-  -->
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script type="text/javascript">
-    google.load("jquery", "1.6.4");
+        $(document).ready(function () {
+            init_vim();
 
-    google.setOnLoadCallback(function() {
-        init_vim();
-
-        $('.screen_view').click(function() {
-            $('.active_context').removeClass('active_context');
-            $(this).addClass('active_context');
+            $('.screen_view').click(function() {
+                $('.active_context').removeClass('active_context');
+                $(this).addClass('active_context');
+            });
         });
-    });
   </script>
 </head>
 

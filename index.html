@@ -35,13 +35,12 @@
 
   <script type="text/Javascript" src="js/tutorial/init_tutorial.js?version={VERSION}"></script>
 
-  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-  <script type="text/javascript">
-    google.load("jquery", "1.6.4");
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 
+  <script type="text/javascript">
     const urlParams = new URLSearchParams(window.location.search);
 
-    google.setOnLoadCallback(function () {
+    $(document).ready(function () {
       if (urlParams.has('layout')) {
         init_tutorial(urlParams.get('layout'));
       } else {
