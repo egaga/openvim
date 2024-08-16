@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" type="text/css" href="css/css.css?version=305437c068ad9360df12b7c723b480b3956bf575" />
+  <link rel="stylesheet" type="text/css" href="css/test.css?version=305437c068ad9360df12b7c723b480b3956bf575" />
+  <link rel="icon" type="image/png" href="icon.png"/>
+
+  <title>Interactive Vim tutorial - testing</title>
+
+  <!-- GENERAL (mostly) -->
+  <script type="text/Javascript" src="js/engine/messager.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/blinking.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/generic.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/document.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/comparison.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/context_help.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+
+  <!-- VIM specific parts -->
+  <script type="text/Javascript" src="js/engine/executor.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/interpreter.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/view.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/searchcommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/visualcommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/visualblockcommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/timescommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/commands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/event.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+
+  <!-- TESTING -->
+  <script type="text/Javascript" src="js/testing/testsengine.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/testing/tests.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/testing/testview.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/testing/init_testing.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+
+  <!--
+  <script type="text/Javascript" src="js/jquery.js"></script>
+  -->
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.6.4");
+
+    google.setOnLoadCallback(function() {
+        init_testing();
+
+        $('.test_description').live('click', function() {
+            $(this).siblings().toggle();
+        })
+    });
+  </script>
+ </head>
+
+<body>
+    <div class="testview">
+        <div class="test_statistics">
+            <div class="tests_run"></div>
+            <div class="tests_succeeded"></div>
+            <div class="tests_failed"></div>
+        </div>
+
+        <div class="tests_result">
+            <div class="tests_allpassed">
+                <h2>OK!</h2>
+            </div>
+
+            <div class="tests_problems">
+                <h2>FAIL!</h2>
+            </div>
+        </div>
+
+        <div class="test_introduction">
+            <p>This page contains unit tests for the Vim engine. Some of the commands are not implemented, and thus fail the test.</p>
+            <p>Click on the name of the test to see details.</p>
+            <p>Usually, a test consists of starting text, commands (key combination), expected result, and what actually engine reported after applying the commands.</p>
+            <p>A passing test has a green header, and a failing one has red.</p>
+            <input type="button" value="Show/Hide details of all tests" id="show_test_details" style="display: none;" />
+        </div>
+
+        <h3>Tests</h3>
+        <div id="appendtarget" style="clear: both;"></div>
+
+        <div class="text" style="display: none;"></div>
+    </div>
+</body>
+</html>

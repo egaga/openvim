@@ -1,0 +1,123 @@
+.keyboard_description {
+    padding: 1px;
+    margin:  1px;
+    display: none;
+}
+
+.screen_view.view_3d {
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+}
+
+.screen_view {
+    margin-left: 100px;
+}
+
+.screen_view.view_3d .keyboard_wrapper {
+    transform: rotateX(45deg) scaleX(1.15) translateY(-60px) translateX(-5px);
+    -webkit-transform: rotateX(45deg) scaleX(1.15) translateY(-60px) translateX(-5px);
+    -moz-transform: rotatex(45deg) scalex(1.15) translatey(-60px) translatex(-5px);
+}
+
+.keyboard_wrapper {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-left: 78px;
+    width: 730px;
+}
+
+.keyboard {
+    border-top: 2px solid #555;
+    border-radius: 0.5em;
+    padding: 10px;
+    width: 725px;
+    box-shadow: 3px 3px 3px black;
+    margin-bottom: 10px;
+}
+
+.keyboardRow {
+    display: inline-block;
+    width: 730px;
+}
+
+.hiddenButton {
+    visibility: hidden;
+}
+
+.keyButton.toggle_keyboard_size, .keyButton.toggle_screen_brightness, .keyButton.toggle_3d_keyboard {
+    background-color: #5c5c5c;
+    background-image: -webkit-gradient(radial, 0% 0%,100,150% 150%,100, to(rgb(92, 92, 92)), from(rgb(118, 118, 118)));
+    background-image: -webkit-radial-gradient(100% 100%, rgb(92, 92, 92), rgb(118, 118, 118));
+    background-image: -moz-radial-gradient(100% 100%, rgb(92, 92, 92), rgb(118, 118, 118));
+    background-image: -o-radial-gradient(100% 100%, rgb(92, 92, 92), rgb(118, 118, 118));
+    background-image: -ms-radial-gradient(100% 100%, rgb(92, 92, 92), rgb(118, 118, 118));
+    background-image: radial-gradient(100% 100%, rgb(92, 92, 92), rgb(118, 118, 118));
+
+    cursor: pointer;
+}
+
+.small_keyboard .keyButton {
+    height: 10px !important;
+    font-size: 0.8em !important;
+    padding: 2px 5px 7px 5px !important;
+    margin: 2px !important;
+}
+
+.keyButton {
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 0.3em;
+    margin: 4px;
+    color: white;
+    display: inline-block;
+    min-width: 35px;
+    height: 25px;
+    padding: 10px 5px 3px 5px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.keyButton.medium {
+    width: 62px;
+}
+
+.keyButton.large {
+    width: 88px;
+}
+
+.keyButton.space {
+    width: 355px;
+}
+
+.keyButton.pressed_down {
+    box-shadow: none;
+    background-color: #555 !important;
+    color: white !important;
+}
+
+.keyButton.waiting_to_be_pressed {
+    background-color: #8a2be2 !important;
+    color: white !important;
+}
+
+.keyButton.waiting_to_be_pressed.blinking_off {
+    background-color: #4b0082 !important;
+}
+
+.keyboard {
+    background-color: #878787;
+    background-image: -webkit-gradient(radial, 0% 0%,100,150% 150%,100, to(rgb(135, 135, 135)), from(rgb(223, 223, 223)));
+    background-image: -webkit-radial-gradient(100% 100%, rgb(135, 135, 135), rgb(223, 223, 223));
+    background-image: -moz-radial-gradient(100% 100%, rgb(135, 135, 135), rgb(223, 223, 223));
+    background-image: -o-radial-gradient(100% 100%, rgb(135, 135, 135), rgb(223, 223, 223));
+    background-image: -ms-radial-gradient(100% 100%, rgb(135, 135, 135), rgb(223, 223, 223));
+    background-image: radial-gradient(100% 100%, rgb(135, 135, 135), rgb(223, 223, 223));
+}
+
+.keyButton {
+    background-color: #333;
+}

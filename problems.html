@@ -1,0 +1,90 @@
+<!doctype html>
+
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <meta charset='utf-8' />
+  <link rel="stylesheet" type="text/css" href="css/css.css?version=305437c068ad9360df12b7c723b480b3956bf575" />
+  <link rel="stylesheet" type="text/css" href="css/problems.css?version=305437c068ad9360df12b7c723b480b3956bf575" />
+  <link rel="icon" type="image/png" href="icon.png"/>
+
+  <title>Interactive Vim tutorial - problems</title>
+
+  <!-- GENERAL (mostly) -->
+  <script src=”http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js”></script>
+  <!--
+  <script type="text/Javascript" src="js/jquery.js"></script>
+  -->
+  <script type="text/Javascript" src="js/engine/messager.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/blinking.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/generic.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/document.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/comparison.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/context_help.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+
+  <!-- VIM specific parts -->
+  <script type="text/Javascript" src="js/engine/executor.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/engine/interpreter.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/view.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/searchcommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/timescommands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/commands/commands.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/view/event.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+  <script type="text/Javascript" src="js/problems/init_problems.js?version=305437c068ad9360df12b7c723b480b3956bf575"></script>
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+    google.load("jquery", "1.6.4");
+
+    google.setOnLoadCallback(init_problems);
+  </script>
+
+  <script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-1334187-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+  </script>
+</head>
+
+<body>
+  <div class="navigation">
+    <a href="development.html">Home</a>
+    <a href="tutorial.html">Tutorial</a>
+    <a href="problems.html" class="selected">Problems</a>
+    <a href="sandbox.html">Sandbox</a>
+    <a href="twosandboxes.html">Two sandboxes</a>
+    <a href="tests.html">Testing</a>
+    <!--
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.openvim.com/problems.html" data-text="OpenVim - Interactive Vim sandbox" data-count="horizontal" data-via="egaga">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+    -->
+    <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
+  </div>
+
+  <div class="screen_view active_context">
+    <div class="content">
+        <div class="statusbar">
+            <div class="statustext"></div>
+            <div class="cursorlocation"></div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="text editor">
+            Now it is plain that everything which is a subject of praise is praised for being of a certain kind and bearing a certain relation to something else:!LINE_BREAK!for instance, the just, and the valiant, and generally the good man, and virtue itself, we praise because of the actions and the results: and the strong man, !LINE_BREAK!and the quick runner, and so forth, we praise for being of a certain nature and bearing a certain relation to something good and excellent (and this is illustrated by attempts to praise the gods;!LINE_BREAK!for they are presented in a ludicrous aspect by being referred to our standard, and this results from the fact, that all!LINE_BREAK!&ndash; Aristotle
+        </div>
+        <div class="searchbar">
+          <span class="searchPrefix">/</span>
+          <span class="searchText"></span>
+          <span class="searchHelp">&lt;Enter to find&gt;</span>
+	    </div>
+
+        <div style="clear: both;"></div>
+    </div>
+
+    <div style="clear: both;"></div>
+  </div>
+</body>
+</html>
