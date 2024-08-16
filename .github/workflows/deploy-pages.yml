@@ -1,0 +1,34 @@
+name: "Deploy to GitHub pages"
+
+on:
+  push:
+    branches:
+      - main
+      - github-pages
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Replace version
+        run: |
+          mkdir production
+          cp -R -v *.html css js production 
+          version=$(git rev-parse HEAD)        
+          echo "Replacing version number in *.html with $version"
+          perl -pi -e 's/{VERSION}/'$version'/g' production/*.html
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./production
