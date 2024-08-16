@@ -4,12 +4,13 @@
 <head>
   <meta charset='utf-8' />
   <link rel="stylesheet" type="text/css" href="css/css.css?version=77a07602aabd124f07fb786c3178c350614ca51f" />
+  <link rel="stylesheet" type="text/css" href="css/tutorial.css?version=77a07602aabd124f07fb786c3178c350614ca51f" />
+  <link rel="stylesheet" type="text/css" href="css/virtual_keyboard.css?version=77a07602aabd124f07fb786c3178c350614ca51f" />
   <link rel="icon" type="image/png" href="icon.png"/>
 
-  <title>Interactive Vim tutorial - two sandboxes</title>
+  <title>Interactive Vim tutorial</title>
 
   <!-- GENERAL (mostly) -->
-
   <script type="text/Javascript" src="js/engine/messager.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
   <script type="text/Javascript" src="js/view/blinking.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
   <script type="text/Javascript" src="js/engine/generic.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
@@ -27,97 +28,78 @@
   <script type="text/Javascript" src="js/commands/timescommands.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
   <script type="text/Javascript" src="js/commands/commands.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
   <script type="text/Javascript" src="js/view/event.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
-  <script type="text/Javascript" src="js/init.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
+  <script type="text/Javascript" src="js/tutorial/tutorial_engine.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
+  <script type="text/Javascript" src="js/tutorial/sections.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
+  <script type="text/Javascript" src="js/virtual_keyboard.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
 
-  <!--
-  <script type="text/Javascript" src="js/jquery.js"></script>
-  -->
+  <script type="text/Javascript" src="js/tutorial/init_tutorial.js?version=77a07602aabd124f07fb786c3178c350614ca51f"></script>
+
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript">
     google.load("jquery", "1.6.4");
 
     google.setOnLoadCallback(function() {
-        init_vim();
-
-        $('.screen_view').click(function() {
-            $('.active_context').removeClass('active_context');
-            $(this).addClass('active_context');
-        });
+        init_tutorial();
     });
+  </script>
+
+  <script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-1334187-4']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
   </script>
 </head>
 
 <body>
   <div class="navigation">
-    <a href="development.html">Home</a>
-    <a href="index.html">Tutorial</a>
-    <a href="sandbox.html">Sandbox</a>
-    <a href="twosandboxes.html" class="selected">Two sandboxes</a>
-    <a href="tests.html">Testing</a>
+    <a href="index.html" class="selected">Tutorial</a>
+    <a href="sandbox.html">Practice</a>
+    <a href="development.html">Development</a>
+    <!--
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.openvim.com/tutorial.html" data-text="OpenVim - Interactive Vim tutorial" data-count="horizontal" data-via="egaga">Tweet</a><script type="text/javascript" src="https://platform.twitter.com/widgets.js"></script>
+    -->
     <a class="bug_or_request" href="https://github.com/egaga/openvim/issues/new">Bugs</a>
   </div>
 
-  <div class="screen_view active_context">
-    <h1>Sandbox #1</h1>
+  <div class="screen_view">
     <div class="content">
+        <h3 class="title"></h3>
+        <h3 class="info"></h3>
+
         <div class="statusbar">
             <div class="statustext"></div>
             <div class="cursorlocation"></div>
             <div style="clear: both;"></div>
         </div>
 
-        <div class="text editor">
-            Now it is plain that everything which is a subject of praise is praised for being of a certain kind and bearing a certain relation to something else:!LINE_BREAK!for instance, the just, and the valiant, and generally the good man.Aristotle
-        </div>
+        <div class="text editor"></div>
 
         <div class="searchbar">
-         <span class="searchPrefix">/</span>
-         <span class="searchText"></span>
-         <span class="searchHelp">&lt;Enter to find&gt;</span>
+          <span class="searchPrefix">/</span>
+          <span class="searchText"></span>
+          <span class="searchHelp">&lt;Enter to find&gt;</span>
         </div>
 
         <div style="clear: both;"></div>
     </div>
 
-    <div class="sidebar">
-        <h4>Context-Aware Actions</h4>
-        <h4 class="context_pressed"></h4>
-        <p class="command-mode"></p>
-        <p class="insert-mode"></p>
-    </div>
-
     <div style="clear: both;"></div>
+    <div class="keyboard_wrapper">
+        <p class="keyboard_description">Virtual keyboard (shows keys you need to press on your physical keyboard; not clickable)</p>
+    </div>
   </div>
 
-  <div class="screen_view" style="margin-top: 50px;">
-    <h1 style="float: left;">Sandbox #2</h1>
-    <div class="content">
-        <div class="statusbar">
-            <div class="statustext"></div>
-            <div class="cursorlocation"></div>
-            <div style="clear: both;"></div>
-        </div>
+  <div class="section_menu">
+        <div class="headline">Sections</div>
+        <div class="toggle_siblings">Toggle</div>
 
-        <div class="text editor">
-            "When someone is searching," said Siddhartha, "then it might easily happen that the only thing his eyes still see is that what he searches for, that he is unable to find anything, to let anything enter his mind, because he always thinks of nothing but the object of his search, because he has a goal, because he is obsessed by the goal.!LINE_BREAK!Searching means: having a goal. But finding means: being free, being open, having no goal.!LINE_BREAK!You, oh venerable one, are perhaps indeed a searcher, because, striving for your goal, there are many things you don't see, which are directly in front of your eyes."!LINE_BREAK!- Hermann Hesse
-        </div>
-        <div class="searchbar">
-           <span class="searchPrefix">/</span>
-           <span class="searchText"></span>
-           <span class="searchHelp">&lt;Enter to find&gt;</span>
-        </div>
-
-        <div style="clear: both;"></div>
-    </div>
-
-    <div class="sidebar">
-        <h4>Context-Aware Actions</h4>
-        <h4 class="context_pressed"></h4>
-        <p class="command-mode"></p>
-        <p class="insert-mode"></p>
-    </div>
-
-    <div style="clear: both;"></div>
+        <div class="section_menu_append_target" style="clear: both;"></div>
   </div>
 </body>
 </html>
