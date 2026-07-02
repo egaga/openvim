@@ -49,7 +49,12 @@ function create_VIM_TESTVIEW(messager, context) {
     });
 
     $('#show_test_details').click(function() {
-      $('.testunit').children(':not(.test_description)').toggle();
+      const details = $('.testunit').children(':not(.test_description)');
+      if (details.filter(':visible').length > 0) {
+          details.hide();
+      } else {
+        details.show();
+      }
     });
 
     $('#show_test_details').show();
