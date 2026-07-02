@@ -48,6 +48,10 @@ function create_VIM_TESTVIEW(messager, context) {
       $(this).closest('.testunit').find('.test_description').addClass('failed_unit');
     });
 
+    $('.test_description').live('click', function() {
+      $(this).siblings().toggle();
+    })
+
     $('#show_test_details').click(function() {
       const details = $('.testunit').children(':not(.test_description)');
       if (details.filter(':visible').length > 0) {
