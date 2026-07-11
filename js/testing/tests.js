@@ -299,7 +299,7 @@ function create_VIM_TESTS(interpreter, testengine) {
   registerBasic("Goto previous word, ignore punctuation",
                 "Hello, [w]hat's up.",
                 "B",
-                "Hell[o], what's up.");
+                "[H]ello, what's up.");
 
   registerBasic("Goto end of word, ignore punctuation",
                 "He[l]lo, nice.",

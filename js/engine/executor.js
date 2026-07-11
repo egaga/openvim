@@ -73,6 +73,7 @@ function create_VIM_EXECUTOR(doc, context) {
 
     'updatePreviousCursor': updatePreviousCursor,
     'insertCharBefore': insertCharBefore,
+    'moveCursor': moveCursor,
     'moveToEndOfLine': moveToEndOfLine,
     'moveToStartOfLine': moveToStartOfLine,
     'moveDown': moveDown,

@@ -9,7 +9,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   
   function cursor() { return exe.cursor(); }
   function changeCursorTo(newCursor) { exe.changeCursorTo(newCursor); }
-  function moveCursor(moveFun) { changeCursorTo(moveFun(cursor())); }
+  function moveCursor(moveFun) { exe.moveCursor(moveFun); }
 
   /******************************************
    * Commands
@@ -25,6 +25,10 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   function vim_e() { moveCursor(exe.moveToEndOfWord); }
   function vim_0() { moveCursor(exe.moveToStartOfLine); }
   function vim_$() { moveCursor(exe.moveToEndOfLine); }
+
+  function vim_shifted_w() { moveCursor(exe.moveToStartOfNextWord); }
+  function vim_shifted_b() { moveCursor(exe.moveToStartOfWord); }
+  function vim_shifted_e() { moveCursor(exe.moveToEndOfWord); }
 
   function vim_i() { env.setInsertMode(); }
 
@@ -417,6 +421,9 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   register('w', vim_w);
   register('b', vim_b);
   register('e', vim_e);
+  register('W', vim_shifted_w);
+  register('B', vim_shifted_b);
+  register('E', vim_shifted_e);
   register('d', vim_d);
   register('D', vim_shifted_d);
   register('x', vim_x);
