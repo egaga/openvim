@@ -50,7 +50,29 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
   function getMark(markKey) { return marks[markKey]; }
   function setMark(markKey, value) { marks[markKey] = value; }
 
-  function reset() { executor.initializeEmptyText(); }
+  function reset() {
+    executor.initializeEmptyText();
+    {
+      insertedCharsInLastInsertModeSession = [];
+      marks = {};
+      register = {};
+      registerType = {};
+      lastState = executor.copyContent();
+      macroRegister = {}
+      lastMacroRecording = [];
+
+      isRecordingMacro = false;
+      lastMacroKey;
+
+      mode = commandMode;
+
+      actions = [];
+      chainedActions = [];
+
+      lastCommandChain = [];
+      currentCommandChain = [];
+    }
+  }
   var commandChainChangeIsAllowed = true; // XXX: ugly special case for repeat
 
   var insertedCharsInLastInsertModeSession = [];

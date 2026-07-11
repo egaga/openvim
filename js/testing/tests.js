@@ -634,7 +634,7 @@ function create_VIM_TESTS(interpreter, testengine) {
   registerBasic("Repeat command: dd",
                 "First|Sec[o]nd|Third",
                 "dd.",
-                "Firs[t]");
+                "[F]irst");
 
   register("Insert after cursor, stay in insert mode", function() {
     setup("F[o]o is bar");

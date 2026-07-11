@@ -1,5 +1,5 @@
 function init_testing() {
-  runTests('.testview');
+  runTests($('.testview'));
 }
 
 function runTests(context) {

@@ -111,6 +111,7 @@ function create_VIM_EXECUTOR(doc, context) {
     'initializeWithText': initializeWithText,
     'removeStartingFrom': removeStartingFrom,
     'mergeWordsWithoutSpace': mergeWordsWithoutSpace,
+    'removeLine': removeLine,
     'removeCurrentLine': removeCurrentLine,
     'removeCharUnderCursor': removeCharUnderCursor,
     'removeCharactersFromCurrentLineStartingFrom': removeCharactersFromCurrentLineStartingFrom
@@ -221,9 +222,6 @@ function create_VIM_EXECUTOR(doc, context) {
 
   function joinLines(line1, line2) {
     var line2Content = line2.find(S.word).clone(true);
-    changeCursorTo(moveToEndOfLine(line1));
-    insertAfter(createNewChar(), cursor());
-    changeCursorTo(moveRight(cursor()));
     line1.append(line2Content);
     line2.remove();
     mergeWordsWithoutSpace(line1);
@@ -339,40 +337,45 @@ function create_VIM_EXECUTOR(doc, context) {
     var fromIndex = charIndex(from);
     var toIndex = charIndex(to);
     
-    if(fromIndex < 0 || toIndex < 0)
-      return;
-    else if(fromIndex < toIndex)
-      removeBetweenInner(from, to, fromIndex, toIndex);
-    else
-      removeBetweenInner(to, from, toIndex, fromIndex);
+    if(fromIndex < 0 || toIndex < 0) return;
+    else if(fromIndex > toIndex) return removeBetween(to, from, inclusiveTo, inclusiveFrom);
 
-    function removeBetweenInner(from, to, fromIndex, toIndex) {
-      if(fromIndex === toIndex) return;
-      // deleting must be delayed, since affects each
-      var to_be_removed = [from];
+    var fromLine = line(from);
+    var toLine = line(to);
+    var fromStartOfALine = from.is(moveToStartOfLine(fromLine));
+    var toEndOfALine = to.is(moveToEndOfLine(toLine));
+    // deleting must be delayed, since affects each
+    var to_be_removed = [from];
 
-      chars().each(function(index) {
-        if(isBetween(index, fromIndex, toIndex, inclusiveFrom, inclusiveTo)) {
-          to_be_removed.push(($(this)));
-        }
-      });
-
-      G.for_each(to_be_removed, function(elem) { elem.remove(); });
-      //G.for_each(to_be_removed, function(elem) { elem.css('background-color', 'yellow')});
-      removeEmptiedWords();
-      removeEmptiedLines();
-
-      var charsTotalLeft = chars().length;
-
-      if(charsTotalLeft === 0)
-        initializeEmptyText();
-      else if(fromIndex + 1 >= charsTotalLeft) {
-        changeCursorToIndex(charsTotalLeft - 1);
-        changeCursorTo(moveToStartOfLine(cursor()));
+    chars().each(function(index) {
+      if(isBetween(index, fromIndex, toIndex, inclusiveFrom, inclusiveTo)) {
+        to_be_removed.push(($(this)));
       }
-      else
-        changeCursorToIndex(fromIndex);
-   }
+    });
+
+    G.for_each(to_be_removed, function(elem) { elem.remove(); });
+    //G.for_each(to_be_removed, function(elem) { elem.css('background-color', 'yellow')});
+    removeEmptiedWords();
+    removeEmptiedLines();
+
+    if(exists(fromLine) && exists(toLine) && !fromLine.is(toLine)) {
+      joinLines(fromLine, toLine);
+    }
+    var charsTotalLeft = chars().length;
+
+    if(charsTotalLeft === 0)
+      initializeEmptyText();
+    else if(fromIndex + 1 >= charsTotalLeft) {
+      changeCursorToIndex(charsTotalLeft - 1);
+      moveCursor(moveToStartOfLine);
+    }
+    else if(!fromStartOfALine && toEndOfALine)
+      changeCursorToIndex(fromIndex-1);
+    else 
+      changeCursorToIndex(fromIndex);
+    function exists(obj) {
+      return obj.length > 0 && $.contains(context.get(0), obj.get(0));
+    }
   }
  
   function isBetween(value, from, to, inclusiveFrom, inclusiveTo) {
@@ -716,23 +719,22 @@ function create_VIM_EXECUTOR(doc, context) {
   }
 
   function removeCurrentLine() {
-    var rowindex = currentRowIndex();
-    var isLastRow = (rowindex + 1) >= $('.line', context).length;
-    currentRow().remove();
+    removeLine(currentRow());
+  }
 
-    if(rowindex === 0) {
-      var row = getRow(rowindex);
-      if(row.length === 0) {
-        initializeEmptyText();
-      } else {
-        changeCursorTo(row.find('.char:first'));
-      }
-    } else {
-      if(isLastRow) {
-        changeCursorTo($('.line:last .char:last', context));
-      } else { // cursor to the following row's first char
-        changeCursorTo(getRow(rowindex).find('.char:first'));
-      }
+  function removeLine(row){
+    var rowindex = lineIndex(row);
+    var isLastRow = (rowindex + 1) >= $('.line', context).length;
+    row.remove();
+
+    if(!isLastRow) { // cursor to the following row's first char
+      changeCursorTo(getRow(rowindex).find('.char:first'));
+    }
+    else if(rowindex === 0) {
+      initializeEmptyText();
+    }
+    else {
+      changeCursorTo(getRow(rowindex-1).find('.char:first'));
     }
   }
 
