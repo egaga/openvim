@@ -19,6 +19,8 @@ function create_VIM_EXECUTOR(doc, context) {
     '[': ']'
   };
 
+  var pinnedColumn = 0;
+
   return {
     /** functions for getting data */
     'cursor': cursor,
@@ -232,7 +234,7 @@ function create_VIM_EXECUTOR(doc, context) {
 
     if(appendable.length === 0) return;
 
-    changeCursorTo(moveLeft(cursor()));
+    moveCursor(moveLeft);
 
     if(appendable.closest(S.word).hasClass('space'))
       appendable.remove();
@@ -302,14 +304,26 @@ function create_VIM_EXECUTOR(doc, context) {
 
   function currentRowIndex() { return $(S.line, context).index(currentRow()); }
 
-  function changeCursorTo(obj) {
+  function changeCursorTo(obj, keepPinnedColumn) {
     if(obj.length === 0) return; // TODO: should we throw exception?
     removeCurrentCursor();
     setCursor(obj);
+    if( isCursor(obj) && !keepPinnedColumn ) {
+      pinnedColumn = currentColumnIndex();
+    }
   }
 
   function changeCursorToIndex(index) {
     changeCursorTo(chars().eq(index));
+  }
+
+  function moveCursor(moveFun) {
+    if(moveFun === moveUp || moveFun === moveDown) {
+      changeCursorTo(moveToColumnIndex(line(moveFun(cursor())),pinnedColumn), true);// uses pinned colIndex
+    }
+    else {
+      changeCursorTo(moveFun(cursor())); // updates pinned colIndex
+    }
   }
 
   function prevChar(to) {
