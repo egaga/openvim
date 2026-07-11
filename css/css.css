@@ -84,6 +84,7 @@ h1 {
   display: inline-block;
   height: 15px;
   margin: 2px 0;
+  white-space: break-spaces;
 }
 
 .char.cursor {

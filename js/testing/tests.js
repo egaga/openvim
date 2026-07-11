@@ -182,7 +182,9 @@ function create_VIM_TESTS(interpreter, testengine) {
   register("Search for pattern, two words (tests space)", function() {
         setup("h[e]llo. what is up. what is?");
         interpretOneCommand("/"); // there will be search of something 
-        interpretSequence("what is"); // text to be found
+        interpretSequence("what"); // text to be found
+        interpretOneCommand("Space");
+        interpretSequence("is");
         interpretOneCommand("Enter"); // first occurrence is searched 
         
         shouldBe("hello. [w]hat is up. what is?");
