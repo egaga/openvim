@@ -179,22 +179,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   }
 
   function vim_insertmode_enter() {
-    // commented lines show an example text that is being manipulated
-
-    // example l[i]ne
-    exe.divideCurrentWordWithSpace();
-    // example l [i]ne
-    moveCursor(exe.moveLeft);
-    // example l[ ]ine
-    var contentCopy = exe.cutLineContent(cursor(), exe.moveToEndOfLine(cursor()));
-    // example l
-    var newLine = $(exe.createNewRow(contentCopy));
-    exe.insertAfter(newLine, exe.currentRow());
-    // example l| in[e] <-- the place of cursor might not be that
-    changeCursorTo(exe.first(exe.chars(newLine)));
-    // example l|[ ]ine
-    vim_x(); // remove the space that was made with divideCurrentWordWithSpace
-    // example l|[i]ne
+    exe.insertNewLineBeforeCursor();
   }
 
   function vim_c() {

@@ -109,6 +109,8 @@ function create_VIM_EXECUTOR(doc, context) {
 
     'copy': copy,
     'joinLines': joinLines,
+    'insertNewLineBeforeCursor': insertNewLineBeforeCursor,
+    'insertNewLineAfterCursor': insertNewLineAfterCursor,
     'divideCurrentWordWithSpace': divideCurrentWordWithSpace,
     'initializeEmptyText': initializeEmptyText,
     'initializeWithText': initializeWithText,
@@ -221,6 +223,39 @@ function create_VIM_EXECUTOR(doc, context) {
       $clone.find(S.cursor).removeClass('cursor');
       return $clone;
     }
+  }
+
+  function insertNewLineBeforeCursor() {
+    // commented lines show an example text that is being manipulated
+    
+    // example : ^This l[i]ne is good$
+    divideCurrentWordWithSpace();
+    // ^This l [i]ne is good$
+    moveCursor(moveLeft);
+    // ^This l[ ]ine is good$
+    var rightContent = cutLineContent(cursor(), moveToEndOfLine(cursor()));
+    // ^[T]his l$
+    var newLine = $(createNewRow(rightContent));
+    insertAfter(newLine, currentRow());
+    // ^[T]his l$
+    // ^ ine is good$
+    changeCursorTo(first(chars(newLine)));
+    // ^This l$
+    // ^[ ]ine is good$
+    removeCharUnderCursor();
+    // ^This l$
+    // ^[i]ne is good$
+  }
+
+  function insertNewLineAfterCursor() {
+    // commented lines show an example text that is being manipulated
+    if(cursor().is(moveToEndOfLine(cursor()))){
+      insertAfter(newLine, currentRow());
+      return;
+    }
+    moveCursor(moveRight);
+    insertNewLineBeforeCursor();
+    changeCursorTo(lastChar(previousLine(cursor())));
   }
 
   function joinLines(line1, line2) {
