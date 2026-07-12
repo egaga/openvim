@@ -507,11 +507,10 @@ function create_VIM_TESTS(interpreter, testengine) {
   });
 
   register("key press writes text in insert mode", function() {
+    setup("ab[c]");
     environment.setInsertMode();
-    test(
-         "ab[c]",
-         "t",
-         "abt[c]");
+    interpretOneCommand("t");
+    shouldBe("abt[c]");
   });
 
   register("Insert at the beginning of a line", function() {
