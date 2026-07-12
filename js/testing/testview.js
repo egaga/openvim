@@ -35,6 +35,10 @@ function create_VIM_TESTVIEW(messager, context) {
     parent.insertBefore(appendtarget);
   }
 
+  function testUnitFailed() {
+    $('.testunit:last').find('.test_description').addClass('failed_unit');
+  }
+
   function showEndResult() {
     if(failedTests === 0) {
       $('.tests_allpassed', context).show();
@@ -43,10 +47,6 @@ function create_VIM_TESTVIEW(messager, context) {
     }
 
     $('.testunit').children(':not(.test_description)').hide();
-
-    $('.testunit .failed').each(function() {
-      $(this).closest('.testunit').find('.test_description').addClass('failed_unit');
-    });
 
     $('.test_description').live('click', function() {
       $(this).siblings().toggle();
@@ -127,6 +127,7 @@ function create_VIM_TESTVIEW(messager, context) {
     'log': log,
     'log2': log2,
     'showEndResult': showEndResult,
+    'testUnitFailed': testUnitFailed,
     'updateStatisticsView': updateStatisticsView,
     'updateValues': updateValues,
     'logStartUnit': logStartUnit,

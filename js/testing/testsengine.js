@@ -82,6 +82,7 @@ function create_VIM_TESTENGINE(interpreter, doc, messager, delayBetweenTests) {
 
   function testFailed() {
     log("Test failed.", '', 'failed');
+    testview.testUnitFailed();
     failedTests++;
   }
 
