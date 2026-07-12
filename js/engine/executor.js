@@ -26,8 +26,11 @@ function create_VIM_EXECUTOR(doc, context) {
     'cursor': cursor,
     'cursorIndex': cursorIndex,
     'firstChar': firstChar,
+    'lastChar': lastChar,
     'previousWord': previousWord,
     'nextWord': nextWord,
+    'previousLine': previousLine,
+    'nextLine': nextLine,
     'currentWord': currentWord,
     'currentRow': currentRow,
     'currentColumnIndex': currentColumnIndex,
@@ -242,6 +245,7 @@ function create_VIM_EXECUTOR(doc, context) {
   function withAttribute(ch, value) { ch.attr(value, 'true'); return ch; }
   function hasAttribute(ch, value) { return ch.attr(value) !== undefined; }
   function firstChar(obj) { return obj.find('.char:first'); }
+  function lastChar(obj) { return obj.find('.char:last'); }
   function isCursor(obj) { return obj.hasClass('cursor'); }
 
   function createNewRow(content) {
@@ -596,6 +600,18 @@ function create_VIM_EXECUTOR(doc, context) {
       };
     }
   } 
+
+  function nextLine(obj) {
+    var index = lineIndex(line(obj));
+    if(index + 1 === lines().length) return false;
+    return lines().eq(1 + index);
+  }
+
+  function previousLine(obj) {
+    var index = lineIndex(line(obj));
+    if(index === 0) return false;
+    return lines().eq(index - 1);
+  }
 
   function removeEmptiedWords() {
     //$(S.word+":not(.space)", context).each(function() {

@@ -229,9 +229,11 @@ function create_VIM_COMMANDS(environment, timesCommands) {
 
   function vim_shifted_j() {
     var currentLine = exe.line(cursor());
-    var nextLine = exe.line(exe.nextWord(exe.moveToEndOfLine(cursor())));
-    
-    if(currentLine !== nextLine)
+    var nextLine = exe.nextLine(cursor());
+    changeCursorTo(exe.moveToEndOfLine(currentLine));
+    exe.insertAfter(exe.createNewChar(), exe.word(cursor()));
+    exe.moveCursor(exe.moveRight);
+    if(currentLine !== nextLine) {}
       exe.joinLines(currentLine, nextLine);
   }
 
