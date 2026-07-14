@@ -11,18 +11,26 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
     'setMode': setMode,
     'registerCommand': registerCommand,
     'registerInsertModeCommand': registerInsertModeCommand,
+    'registerVisualModeCommand': registerVisualModeCommand,
     'addAction': addAction,
     'isInsertableCharacter': isInsertableCharacter,
     'executor': executor,
     'setInsertMode': setInsertMode,
     'setCommandMode': setCommandMode,
+    'setVisualMode': setVisualMode,
+    'isVisualMode': isVisualMode,
     'isCommandMode': isCommandMode,
     'isInsertMode': isInsertMode,
     'getLastCommandChain': getLastCommandChain,
     'interpretOneCommand': interpretOneCommand,
     'interpretSequence': interpretSequence,
+    'interpret_command': interpret_command,
+    'interpret_insert': interpret_insert,
+    'interpret_visual': interpret_visual,
     'saveToRegister': saveToRegister,
     'loadFromRegister': loadFromRegister,
+    'setRegisterType': setRegisterType,
+    'getRegisterType': getRegisterType,
     'reset': reset,
     'undo': undo,
     'startMacroRecording': startMacroRecording,
@@ -39,12 +47,6 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
   function removedInsertModeChar() {
       if(insertedCharsInLastInsertModeSession.length > 0)
         insertedCharsInLastInsertModeSession.pop();
-  }
-
-  function getMode() { return mode; }
-  function setMode(newMode) {
-    if(newMode !== insertMode && newMode !== commandMode) throw "Mode " + mode + " is not supported!";
-    mode = newMode;
   }
 
   function getMark(markKey) { return marks[markKey]; }
@@ -78,6 +80,7 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
   var insertedCharsInLastInsertModeSession = [];
   var marks = {};
   var register = {};
+  var registerType = {};
   var lastState = executor.copyContent();
   var macroRegister = {}
   var lastMacroRecording = [];
@@ -118,9 +121,18 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
     var result = register['anonymous'];
     return !!result ? executor.copy(result) : false;
   }
+
+  function setRegisterType(type) {
+    registerType = type;
+  }
+
+  function getRegisterType() {
+    return registerType;
+  }
   
   var commandMode = "command";
   var insertMode = "insert";
+  var visualMode = "visual";
 
   var mode = commandMode;
 
@@ -128,6 +140,7 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
   var chainedActions = []; // names of the actions in current chain
   var commands = {}; // command mode commands
   var insertModeCommands = {}; // these are rare in practice
+  var visualModeCommands = {};
 
   var lastCommandChain = [];
   var currentCommandChain = [];
@@ -140,6 +153,10 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
     registerCommandPrivate(insertModeCommands, command_key, command_fun);
   }
 
+  function registerVisualModeCommand(command_key, command_fun) {
+    registerCommandPrivate(visualModeCommands, command_key, command_fun);
+  }
+
   function registerCommandPrivate(command_map, command_key, command_fun) {
     if(command_map[command_key] === undefined) {
       command_map[command_key] = command_fun;
@@ -147,12 +164,16 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
       throw "command registered already for key: " + command_key;
     }
   }
+  
+  function getMode() { return mode; }
 
   function setMode(newmode) {
     if(newmode === insertMode)
       setInsertMode();
     else if(newmode === commandMode)
       setCommandMode();
+    else if(newmode === visualMode)
+      setVisualMode();
   }
 
   function setInsertMode() {
@@ -167,9 +188,15 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
 
     messager.sendMessage("updated_mode", commandMode);
   }
+
+  function setVisualMode() {
+    mode = visualMode;
+    messager.sendMessage("updated_mode", visualMode);
+  }
   
   function isCommandMode() { return mode === commandMode; }
   function isInsertMode() { return mode === insertMode; }
+  function isVisualMode() { return mode === visualMode; }
 
   function interpretSequence(sequenceOfInputs) {
     G.for_each(sequenceOfInputs, function(input) {
@@ -207,16 +234,18 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
       context_help.show_help();
       do_chained_action(input);
     } else if(isCommandMode()) {
-      if(!isRepeat(input)) {
+      if(!isRepeat(input)) 
         pushToCommandChain(input);
-      }
-      
       interpret_command(input);
-
       if(chainedActions.length === 0)
         resetCommandChainHistory();
-    } else {
+    } else if(isInsertMode()) {
       interpret_insert(input);
+    }
+    else if(isVisualMode()) {
+      interpret_visual(input);
+      if(chainedActions.length === 0)
+        resetCommandChainHistory();
     }
     
     messager.sendMessage("interpreter_interpreted", input);
@@ -244,6 +273,15 @@ function create_VIM_INTERPRETER(doc, executor, context_help, messager) {
       addedInsertModeChar(input);
       insertChar(input);
     }
+  }
+
+  function interpret_visual(input) {
+    var command = visualModeCommands[input];
+    if(command !== undefined) {
+      command();
+      return ;
+    }
+    visualModeCommands['interceptor'](input); // hack
   }
 
   function insertChar(ch) {

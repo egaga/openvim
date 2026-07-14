@@ -23,6 +23,7 @@ function create_VIM_EXECUTOR(doc, context) {
 
   return {
     /** functions for getting data */
+    'context': context,
     'cursor': cursor,
     'cursorIndex': cursorIndex,
     'firstChar': firstChar,
@@ -69,6 +70,7 @@ function create_VIM_EXECUTOR(doc, context) {
     'removeBetween': removeBetween,
     'copyBetween': copyBetween,
     'copyLineContent': copyLineContent,
+    'trimLine': trimLine,
     'cutLineContent': cutLineContent,
     'replace': replace,
     'changeCursorToIndex': changeCursorToIndex,
@@ -207,12 +209,23 @@ function create_VIM_EXECUTOR(doc, context) {
     return words.map(function() { return copy($(this)); });
   }
 
+  function trimLine(lineCopy, fromIndex, toIndex) {
+    lineCopy.find(S.character).filter(function(index) {
+      return (fromIndex !== undefined && index < fromIndex) ||
+             (toIndex !== undefined && index > toIndex);
+    }).remove();
+
+    lineCopy.find(S.word).filter(function() {
+      return $(this).find(S.character).length === 0;
+    }).remove();
+  }
+
   function copy(elem) {
     if(elem.length > 1) {
       return elem.map(function() {
         var $clone = $(this).clone(true);
         $clone.find(S.cursor).removeClass('cursor');
-        return $clone;
+        return $clone[0];
       });
     } else {
       //FIXME: hack to get inner content of [ [ elem ] ] to [ elem ]
@@ -424,6 +437,32 @@ function create_VIM_EXECUTOR(doc, context) {
   } 
 
   function copyBetween(from, to) {
+    var fromIndex = charIndex(from);
+    var toIndex = charIndex(to);
+
+    if(fromIndex < 0 || toIndex < 0)
+      return false;
+    else if(fromIndex < toIndex)
+      return copyBetweenInner(from, to, fromIndex, toIndex);
+    else
+      return copyBetweenInner(to, from, toIndex, fromIndex);
+
+    function copyBetweenInner(from, to, fromIndex, toIndex) {
+      var fromLine = line(from);
+      var toLine = line(to);
+      var fromLineIndex = lineIndex(fromLine);
+      var toLineIndex = lineIndex(toLine);
+      var copiedLines = [];
+
+      for(var i = fromLineIndex; i <= toLineIndex; i++) {
+        copiedLines.push(copy(lines().eq(i)));
+      }
+
+      trimLine(copiedLines[copiedLines.length - 1], 0, toIndex - charIndex(first(charsInLine(toLine))));
+      trimLine(copiedLines[0], fromIndex - charIndex(first(charsInLine(fromLine))), Infinity);
+      copiedLines = $(copiedLines.map((e)=>e[0]));
+      return copiedLines;
+    }
   }
 
   function cursorIndex()    { return charIndex(cursor()); }

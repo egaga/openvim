@@ -278,6 +278,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
     //TODO: accept general movement
     function wait_for_y(input) {
       if(input == 'y') {
+        env.setRegisterType("linewise");
         var copy = exe.copy(exe.currentRow());
         env.saveToRegister(copy);
       }
@@ -287,13 +288,65 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   }
 
   function vim_p() {
-    var copy = env.loadFromRegister();
+    var content = env.loadFromRegister();
+    var type = env.getRegisterType();
+    if(!content) {
+      console.log("Nothing in register");
+    }
+    else if(type == "linewise") {
+      exe.insertAfter(content, exe.currentRow());
+      changeCursorTo(exe.firstChar(exe.nextLine(cursor())));
+    }
+    else if(type == "characterwise"){ // split, insert & merge
+      exe.insertNewLineAfterCursor();
+      var firstHalf = exe.currentRow();
+      var secondHalf = exe.nextLine(cursor());
+      exe.insertAfter(content, firstHalf);
+      
+      if(content.length == 1)
+        changeCursorTo(exe.lastChar(exe.previousLine(secondHalf)));
+      else
+        changeCursorTo(exe.firstChar(exe.nextLine(firstHalf)));
 
-    if(!!copy && exe.isLine(copy)) {
-      exe.insertAfter(copy, exe.currentRow());
-      changeCursorTo(exe.firstChar(exe.nextWord(exe.moveToEndOfLine(cursor()))));
-    } else { //FIXME: should take into account a heterogenous array of lines, words...
-      exe.insertAfter(copy, cursor());
+      exe.joinLines(firstHalf, exe.nextLine(firstHalf));
+      exe.joinLines(exe.previousLine(secondHalf), secondHalf);
+    }
+    else if(type == "blockwise"){
+      
+    }
+    else {
+      // buffer is empty
+    }
+  }
+
+  function vim_shifted_p() {
+    var content = env.loadFromRegister();
+    var type = env.getRegisterType();
+    if(!content) {
+      console.log("Nothing in register");
+    }
+    else if(type == "linewise") {
+      exe.insertBefore(content, exe.currentRow());
+      changeCursorTo(exe.firstChar(exe.previousLine(cursor())));
+    }
+    else if(type == "characterwise"){ // split, insert & merge
+      exe.insertNewLineBeforeCursor();
+      var firstHalf = exe.previousLine(cursor());
+      var secondHalf = exe.currentRow();
+      exe.insertBefore(content, exe.currentRow());
+
+      if(content.length == 1)
+        changeCursorTo(exe.lastChar(exe.previousLine(secondHalf)));
+      else
+        changeCursorTo(exe.firstChar(exe.nextLine(firstHalf)));
+
+      exe.joinLines(firstHalf, exe.nextLine(firstHalf));
+      exe.joinLines(exe.previousLine(secondHalf), secondHalf);
+    }
+    else if(type == "blockwise"){
+      // a lot of work to be done
+    }
+    else {
     }
   }
 
@@ -432,6 +485,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   register('I', vim_shifted_i);
   register('y', vim_y);
   register('p', vim_p); 
+  register('P', vim_shifted_p); 
   register('u', vim_u);
   register('%', vim_goto_corresponding_parentheses);
   register('q', vim_macro_recording);

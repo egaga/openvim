@@ -13,8 +13,7 @@ function initScreen(context) {
   var interpreter = create_VIM_INTERPRETER(doc, executor, context_help, messager);
   var view = create_VIM_VIEW(interpreter.environment, messager, context);
 
-  //create_VIM_VISUAL_COMMANDS(interpreter.environment, messager, doc);
-  create_VIM_VISUALBLOCK_COMMANDS(interpreter.environment, messager, doc);
+  create_VIM_VISUAL_COMMANDS(interpreter.environment, messager, doc);
   create_VIM_SEARCH_COMMANDS(interpreter.environment, messager);
 
   var timesCommansd = create_VIM_TIMESCOMMANDS(interpreter.environment, messager);
