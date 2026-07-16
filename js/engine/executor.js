@@ -263,7 +263,7 @@ function create_VIM_EXECUTOR(doc, context) {
   function insertNewLineAfterCursor() {
     // commented lines show an example text that is being manipulated
     if(cursor().is(moveToEndOfLine(cursor()))){
-      insertAfter(newLine, currentRow());
+      insertAfter($(createNewRow(rightContent)), currentRow());
       return;
     }
     moveCursor(moveRight);
@@ -661,18 +661,20 @@ function create_VIM_EXECUTOR(doc, context) {
   /** direction is from left to right */
   function moveToStartOfNextWord(obj, times_)  {
     var times = getOrElse(times_, 1); 
-    if(times <= 0) return obj; 
 
-    var next = nextWord(obj);
+    while(times > 0) {
+      var next = nextWord(obj);
+      times--;
 
-    if(!!next)
-      return moveToStartOfNextWord(first(next.find(S.character)), times - 1);
-    else {
-      var result = last(word(obj).find(S.character));
-      return {
-        lastPossible: result
-      };
+      if(!!next)
+        obj = first(next.find(S.character));
+      else {
+        obj = last(word(obj).find(S.character));
+        break;
+      }
     }
+
+    return obj;
   } 
 
   function nextLine(obj) {
