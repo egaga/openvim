@@ -84,6 +84,7 @@ h1 {
   display: inline-block;
   height: 15px;
   margin: 2px 0;
+  white-space: break-spaces;
 }
 
 .char.cursor {
@@ -280,7 +281,15 @@ h4 {
 .searchbar span { margin: 0; }
 .searchHelp { margin-left: 20px; }
 
-.char.visual_block_char, .char.visual_char {
+.visual_char {
   background-color: #ff1493 !important;
   color: white !important;
+}
+.visual_char.cursor.blinking_off {
+  background-color: #ff1493 !important;
+  color: black !important;
+}
+.visual_char.cursor:not(.blinking_off) {
+  background-color: white !important;
+  color: black !important;
 }

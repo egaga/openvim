@@ -23,16 +23,22 @@ function create_VIM_VIEW(environment, messager, context) {
       $('.statustext', context).text("mode: NORMAL");
       $('.insert-mode', context).hide();
       $('.command-mode', context).show();
-    } else {
+    } else if(environment.isInsertMode()){
       $('.insert-mode', context).show();
       $('.command-mode', context).hide();
       $('.statustext', context).text("mode: INSERT");
+    } else if(environment.isVisualMode()){
+      $('.insert-mode', context).hide();
+      $('.command-mode', context).hide();
+      $('.statustext', context).text("mode: VISUAL"); // normal, block or line
     }
 
     var row = 1 + executor.currentRowIndex();
     var col = 1 + executor.currentColumnIndex();
 
     $('.cursorlocation').text(row + ", " + col);
+
+    messager.sendMessage('view_updated');
   }
 
   function receiveMessage(message) {

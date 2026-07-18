@@ -56,7 +56,7 @@ function create_VIM_DOCUMENT(context) {
   }
 
   function getSpaceWord() {
-    return "<div class='word space'><div class='char'>&nbsp;</div></div>";
+    return "<div class='word space'><div class='char'> </div></div>";
   }
 
   function getEmptyText() {

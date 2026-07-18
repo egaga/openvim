@@ -9,7 +9,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   
   function cursor() { return exe.cursor(); }
   function changeCursorTo(newCursor) { exe.changeCursorTo(newCursor); }
-  function moveCursor(moveFun) { changeCursorTo(moveFun(cursor())); }
+  function moveCursor(moveFun) { exe.moveCursor(moveFun); }
 
   /******************************************
    * Commands
@@ -25,6 +25,10 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   function vim_e() { moveCursor(exe.moveToEndOfWord); }
   function vim_0() { moveCursor(exe.moveToStartOfLine); }
   function vim_$() { moveCursor(exe.moveToEndOfLine); }
+
+  function vim_shifted_w() { moveCursor(exe.moveToStartOfNextWord); }
+  function vim_shifted_b() { moveCursor(exe.moveToStartOfWord); }
+  function vim_shifted_e() { moveCursor(exe.moveToEndOfWord); }
 
   function vim_i() { env.setInsertMode(); }
 
@@ -175,22 +179,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   }
 
   function vim_insertmode_enter() {
-    // commented lines show an example text that is being manipulated
-
-    // example l[i]ne
-    exe.divideCurrentWordWithSpace();
-    // example l [i]ne
-    moveCursor(exe.moveLeft);
-    // example l[ ]ine
-    var contentCopy = exe.cutLineContent(cursor(), exe.moveToEndOfLine(cursor()));
-    // example l
-    var newLine = $(exe.createNewRow(contentCopy));
-    exe.insertAfter(newLine, exe.currentRow());
-    // example l| in[e] <-- the place of cursor might not be that
-    changeCursorTo(exe.first(exe.chars(newLine)));
-    // example l|[ ]ine
-    vim_x(); // remove the space that was made with divideCurrentWordWithSpace
-    // example l|[i]ne
+    exe.insertNewLineBeforeCursor();
   }
 
   function vim_c() {
@@ -225,9 +214,11 @@ function create_VIM_COMMANDS(environment, timesCommands) {
 
   function vim_shifted_j() {
     var currentLine = exe.line(cursor());
-    var nextLine = exe.line(exe.nextWord(exe.moveToEndOfLine(cursor())));
-    
-    if(currentLine !== nextLine)
+    var nextLine = exe.nextLine(cursor());
+    changeCursorTo(exe.moveToEndOfLine(currentLine));
+    exe.insertAfter(exe.createNewChar(), exe.word(cursor()));
+    exe.moveCursor(exe.moveRight);
+    if(currentLine !== nextLine) {}
       exe.joinLines(currentLine, nextLine);
   }
 
@@ -287,6 +278,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
     //TODO: accept general movement
     function wait_for_y(input) {
       if(input == 'y') {
+        env.setRegisterType("linewise");
         var copy = exe.copy(exe.currentRow());
         env.saveToRegister(copy);
       }
@@ -296,13 +288,65 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   }
 
   function vim_p() {
-    var copy = env.loadFromRegister();
+    var content = env.loadFromRegister();
+    var type = env.getRegisterType();
+    if(!content) {
+      console.log("Nothing in register");
+    }
+    else if(type == "linewise") {
+      exe.insertAfter(content, exe.currentRow());
+      changeCursorTo(exe.firstChar(exe.nextLine(cursor())));
+    }
+    else if(type == "characterwise"){ // split, insert & merge
+      exe.insertNewLineAfterCursor();
+      var firstHalf = exe.currentRow();
+      var secondHalf = exe.nextLine(cursor());
+      exe.insertAfter(content, firstHalf);
+      
+      if(content.length == 1)
+        changeCursorTo(exe.lastChar(exe.previousLine(secondHalf)));
+      else
+        changeCursorTo(exe.firstChar(exe.nextLine(firstHalf)));
 
-    if(!!copy && exe.isLine(copy)) {
-      exe.insertAfter(copy, exe.currentRow());
-      changeCursorTo(exe.firstChar(exe.nextWord(exe.moveToEndOfLine(cursor()))));
-    } else { //FIXME: should take into account a heterogenous array of lines, words...
-      exe.insertAfter(copy, cursor());
+      exe.joinLines(firstHalf, exe.nextLine(firstHalf));
+      exe.joinLines(exe.previousLine(secondHalf), secondHalf);
+    }
+    else if(type == "blockwise"){
+      
+    }
+    else {
+      // buffer is empty
+    }
+  }
+
+  function vim_shifted_p() {
+    var content = env.loadFromRegister();
+    var type = env.getRegisterType();
+    if(!content) {
+      console.log("Nothing in register");
+    }
+    else if(type == "linewise") {
+      exe.insertBefore(content, exe.currentRow());
+      changeCursorTo(exe.firstChar(exe.previousLine(cursor())));
+    }
+    else if(type == "characterwise"){ // split, insert & merge
+      exe.insertNewLineBeforeCursor();
+      var firstHalf = exe.previousLine(cursor());
+      var secondHalf = exe.currentRow();
+      exe.insertBefore(content, exe.currentRow());
+
+      if(content.length == 1)
+        changeCursorTo(exe.lastChar(exe.previousLine(secondHalf)));
+      else
+        changeCursorTo(exe.firstChar(exe.nextLine(firstHalf)));
+
+      exe.joinLines(firstHalf, exe.nextLine(firstHalf));
+      exe.joinLines(exe.previousLine(secondHalf), secondHalf);
+    }
+    else if(type == "blockwise"){
+      // a lot of work to be done
+    }
+    else {
     }
   }
 
@@ -417,6 +461,9 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   register('w', vim_w);
   register('b', vim_b);
   register('e', vim_e);
+  register('W', vim_shifted_w);
+  register('B', vim_shifted_b);
+  register('E', vim_shifted_e);
   register('d', vim_d);
   register('D', vim_shifted_d);
   register('x', vim_x);
@@ -438,6 +485,7 @@ function create_VIM_COMMANDS(environment, timesCommands) {
   register('I', vim_shifted_i);
   register('y', vim_y);
   register('p', vim_p); 
+  register('P', vim_shifted_p); 
   register('u', vim_u);
   register('%', vim_goto_corresponding_parentheses);
   register('q', vim_macro_recording);

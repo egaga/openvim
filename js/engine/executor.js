@@ -19,13 +19,19 @@ function create_VIM_EXECUTOR(doc, context) {
     '[': ']'
   };
 
+  var pinnedColumn = 0;
+
   return {
     /** functions for getting data */
+    'context': context,
     'cursor': cursor,
     'cursorIndex': cursorIndex,
     'firstChar': firstChar,
+    'lastChar': lastChar,
     'previousWord': previousWord,
     'nextWord': nextWord,
+    'previousLine': previousLine,
+    'nextLine': nextLine,
     'currentWord': currentWord,
     'currentRow': currentRow,
     'currentColumnIndex': currentColumnIndex,
@@ -64,6 +70,7 @@ function create_VIM_EXECUTOR(doc, context) {
     'removeBetween': removeBetween,
     'copyBetween': copyBetween,
     'copyLineContent': copyLineContent,
+    'trimLine': trimLine,
     'cutLineContent': cutLineContent,
     'replace': replace,
     'changeCursorToIndex': changeCursorToIndex,
@@ -71,6 +78,7 @@ function create_VIM_EXECUTOR(doc, context) {
 
     'updatePreviousCursor': updatePreviousCursor,
     'insertCharBefore': insertCharBefore,
+    'moveCursor': moveCursor,
     'moveToEndOfLine': moveToEndOfLine,
     'moveToStartOfLine': moveToStartOfLine,
     'moveDown': moveDown,
@@ -103,11 +111,14 @@ function create_VIM_EXECUTOR(doc, context) {
 
     'copy': copy,
     'joinLines': joinLines,
+    'insertNewLineBeforeCursor': insertNewLineBeforeCursor,
+    'insertNewLineAfterCursor': insertNewLineAfterCursor,
     'divideCurrentWordWithSpace': divideCurrentWordWithSpace,
     'initializeEmptyText': initializeEmptyText,
     'initializeWithText': initializeWithText,
     'removeStartingFrom': removeStartingFrom,
     'mergeWordsWithoutSpace': mergeWordsWithoutSpace,
+    'removeLine': removeLine,
     'removeCurrentLine': removeCurrentLine,
     'removeCharUnderCursor': removeCharUnderCursor,
     'removeCharactersFromCurrentLineStartingFrom': removeCharactersFromCurrentLineStartingFrom
@@ -198,12 +209,23 @@ function create_VIM_EXECUTOR(doc, context) {
     return words.map(function() { return copy($(this)); });
   }
 
+  function trimLine(lineCopy, fromIndex, toIndex) {
+    lineCopy.find(S.character).filter(function(index) {
+      return (fromIndex !== undefined && index < fromIndex) ||
+             (toIndex !== undefined && index > toIndex);
+    }).remove();
+
+    lineCopy.find(S.word).filter(function() {
+      return $(this).find(S.character).length === 0;
+    }).remove();
+  }
+
   function copy(elem) {
     if(elem.length > 1) {
       return elem.map(function() {
         var $clone = $(this).clone(true);
         $clone.find(S.cursor).removeClass('cursor');
-        return $clone;
+        return $clone[0];
       });
     } else {
       //FIXME: hack to get inner content of [ [ elem ] ] to [ elem ]
@@ -216,11 +238,41 @@ function create_VIM_EXECUTOR(doc, context) {
     }
   }
 
+  function insertNewLineBeforeCursor() {
+    // commented lines show an example text that is being manipulated
+    
+    // example : ^This l[i]ne is good$
+    divideCurrentWordWithSpace();
+    // ^This l [i]ne is good$
+    moveCursor(moveLeft);
+    // ^This l[ ]ine is good$
+    var rightContent = cutLineContent(cursor(), moveToEndOfLine(cursor()));
+    // ^[T]his l$
+    var newLine = $(createNewRow(rightContent));
+    insertAfter(newLine, currentRow());
+    // ^[T]his l$
+    // ^ ine is good$
+    changeCursorTo(first(chars(newLine)));
+    // ^This l$
+    // ^[ ]ine is good$
+    removeCharUnderCursor();
+    // ^This l$
+    // ^[i]ne is good$
+  }
+
+  function insertNewLineAfterCursor() {
+    // commented lines show an example text that is being manipulated
+    if(cursor().is(moveToEndOfLine(cursor()))){
+      insertAfter($(createNewRow(rightContent)), currentRow());
+      return;
+    }
+    moveCursor(moveRight);
+    insertNewLineBeforeCursor();
+    changeCursorTo(lastChar(previousLine(cursor())));
+  }
+
   function joinLines(line1, line2) {
     var line2Content = line2.find(S.word).clone(true);
-    changeCursorTo(moveToEndOfLine(line1));
-    insertAfter(createNewChar(), cursor());
-    changeCursorTo(moveRight(cursor()));
     line1.append(line2Content);
     line2.remove();
     mergeWordsWithoutSpace(line1);
@@ -232,7 +284,7 @@ function create_VIM_EXECUTOR(doc, context) {
 
     if(appendable.length === 0) return;
 
-    changeCursorTo(moveLeft(cursor()));
+    moveCursor(moveLeft);
 
     if(appendable.closest(S.word).hasClass('space'))
       appendable.remove();
@@ -241,6 +293,7 @@ function create_VIM_EXECUTOR(doc, context) {
   function withAttribute(ch, value) { ch.attr(value, 'true'); return ch; }
   function hasAttribute(ch, value) { return ch.attr(value) !== undefined; }
   function firstChar(obj) { return obj.find('.char:first'); }
+  function lastChar(obj) { return obj.find('.char:last'); }
   function isCursor(obj) { return obj.hasClass('cursor'); }
 
   function createNewRow(content) {
@@ -302,14 +355,26 @@ function create_VIM_EXECUTOR(doc, context) {
 
   function currentRowIndex() { return $(S.line, context).index(currentRow()); }
 
-  function changeCursorTo(obj) {
+  function changeCursorTo(obj, keepPinnedColumn) {
     if(obj.length === 0) return; // TODO: should we throw exception?
     removeCurrentCursor();
     setCursor(obj);
+    if( isCursor(obj) && !keepPinnedColumn ) {
+      pinnedColumn = currentColumnIndex();
+    }
   }
 
   function changeCursorToIndex(index) {
     changeCursorTo(chars().eq(index));
+  }
+
+  function moveCursor(moveFun) {
+    if(moveFun === moveUp || moveFun === moveDown) {
+      changeCursorTo(moveToColumnIndex(line(moveFun(cursor())),pinnedColumn), true);// uses pinned colIndex
+    }
+    else {
+      changeCursorTo(moveFun(cursor())); // updates pinned colIndex
+    }
   }
 
   function prevChar(to) {
@@ -324,40 +389,45 @@ function create_VIM_EXECUTOR(doc, context) {
     var fromIndex = charIndex(from);
     var toIndex = charIndex(to);
     
-    if(fromIndex < 0 || toIndex < 0)
-      return;
-    else if(fromIndex < toIndex)
-      removeBetweenInner(from, to, fromIndex, toIndex);
-    else
-      removeBetweenInner(to, from, toIndex, fromIndex);
+    if(fromIndex < 0 || toIndex < 0) return;
+    else if(fromIndex > toIndex) return removeBetween(to, from, inclusiveTo, inclusiveFrom);
 
-    function removeBetweenInner(from, to, fromIndex, toIndex) {
-      if(fromIndex === toIndex) return;
-      // deleting must be delayed, since affects each
-      var to_be_removed = [from];
+    var fromLine = line(from);
+    var toLine = line(to);
+    var fromStartOfALine = from.is(moveToStartOfLine(fromLine));
+    var toEndOfALine = to.is(moveToEndOfLine(toLine));
+    // deleting must be delayed, since affects each
+    var to_be_removed = [from];
 
-      chars().each(function(index) {
-        if(isBetween(index, fromIndex, toIndex, inclusiveFrom, inclusiveTo)) {
-          to_be_removed.push(($(this)));
-        }
-      });
-
-      G.for_each(to_be_removed, function(elem) { elem.remove(); });
-      //G.for_each(to_be_removed, function(elem) { elem.css('background-color', 'yellow')});
-      removeEmptiedWords();
-      removeEmptiedLines();
-
-      var charsTotalLeft = chars().length;
-
-      if(charsTotalLeft === 0)
-        initializeEmptyText();
-      else if(fromIndex + 1 >= charsTotalLeft) {
-        changeCursorToIndex(charsTotalLeft - 1);
-        changeCursorTo(moveToStartOfLine(cursor()));
+    chars().each(function(index) {
+      if(isBetween(index, fromIndex, toIndex, inclusiveFrom, inclusiveTo)) {
+        to_be_removed.push(($(this)));
       }
-      else
-        changeCursorToIndex(fromIndex);
-   }
+    });
+
+    G.for_each(to_be_removed, function(elem) { elem.remove(); });
+    //G.for_each(to_be_removed, function(elem) { elem.css('background-color', 'yellow')});
+    removeEmptiedWords();
+    removeEmptiedLines();
+
+    if(exists(fromLine) && exists(toLine) && !fromLine.is(toLine)) {
+      joinLines(fromLine, toLine);
+    }
+    var charsTotalLeft = chars().length;
+
+    if(charsTotalLeft === 0)
+      initializeEmptyText();
+    else if(fromIndex + 1 >= charsTotalLeft) {
+      changeCursorToIndex(charsTotalLeft - 1);
+      moveCursor(moveToStartOfLine);
+    }
+    else if(!fromStartOfALine && toEndOfALine)
+      changeCursorToIndex(fromIndex-1);
+    else 
+      changeCursorToIndex(fromIndex);
+    function exists(obj) {
+      return obj.length > 0 && $.contains(context.get(0), obj.get(0));
+    }
   }
  
   function isBetween(value, from, to, inclusiveFrom, inclusiveTo) {
@@ -367,6 +437,32 @@ function create_VIM_EXECUTOR(doc, context) {
   } 
 
   function copyBetween(from, to) {
+    var fromIndex = charIndex(from);
+    var toIndex = charIndex(to);
+
+    if(fromIndex < 0 || toIndex < 0)
+      return false;
+    else if(fromIndex < toIndex)
+      return copyBetweenInner(from, to, fromIndex, toIndex);
+    else
+      return copyBetweenInner(to, from, toIndex, fromIndex);
+
+    function copyBetweenInner(from, to, fromIndex, toIndex) {
+      var fromLine = line(from);
+      var toLine = line(to);
+      var fromLineIndex = lineIndex(fromLine);
+      var toLineIndex = lineIndex(toLine);
+      var copiedLines = [];
+
+      for(var i = fromLineIndex; i <= toLineIndex; i++) {
+        copiedLines.push(copy(lines().eq(i)));
+      }
+
+      trimLine(copiedLines[copiedLines.length - 1], 0, toIndex - charIndex(first(charsInLine(toLine))));
+      trimLine(copiedLines[0], fromIndex - charIndex(first(charsInLine(fromLine))), Infinity);
+      copiedLines = $(copiedLines.map((e)=>e[0]));
+      return copiedLines;
+    }
   }
 
   function cursorIndex()    { return charIndex(cursor()); }
@@ -565,19 +661,33 @@ function create_VIM_EXECUTOR(doc, context) {
   /** direction is from left to right */
   function moveToStartOfNextWord(obj, times_)  {
     var times = getOrElse(times_, 1); 
-    if(times <= 0) return obj; 
 
-    var next = nextWord(obj);
+    while(times > 0) {
+      var next = nextWord(obj);
+      times--;
 
-    if(!!next)
-      return moveToStartOfNextWord(first(next.find(S.character)), times - 1);
-    else {
-      var result = last(word(obj).find(S.character));
-      return {
-        lastPossible: result
-      };
+      if(!!next)
+        obj = first(next.find(S.character));
+      else {
+        obj = last(word(obj).find(S.character));
+        break;
+      }
     }
+
+    return obj;
   } 
+
+  function nextLine(obj) {
+    var index = lineIndex(line(obj));
+    if(index + 1 === lines().length) return false;
+    return lines().eq(1 + index);
+  }
+
+  function previousLine(obj) {
+    var index = lineIndex(line(obj));
+    if(index === 0) return false;
+    return lines().eq(index - 1);
+  }
 
   function removeEmptiedWords() {
     //$(S.word+":not(.space)", context).each(function() {
@@ -701,23 +811,22 @@ function create_VIM_EXECUTOR(doc, context) {
   }
 
   function removeCurrentLine() {
-    var rowindex = currentRowIndex();
-    var isLastRow = (rowindex + 1) >= $('.line', context).length;
-    currentRow().remove();
+    removeLine(currentRow());
+  }
 
-    if(rowindex === 0) {
-      var row = getRow(rowindex);
-      if(row.length === 0) {
-        initializeEmptyText();
-      } else {
-        changeCursorTo(row.find('.char:first'));
-      }
-    } else {
-      if(isLastRow) {
-        changeCursorTo($('.line:last .char:last', context));
-      } else { // cursor to the following row's first char
-        changeCursorTo(getRow(rowindex).find('.char:first'));
-      }
+  function removeLine(row){
+    var rowindex = lineIndex(row);
+    var isLastRow = (rowindex + 1) >= $('.line', context).length;
+    row.remove();
+
+    if(!isLastRow) { // cursor to the following row's first char
+      changeCursorTo(getRow(rowindex).find('.char:first'));
+    }
+    else if(rowindex === 0) {
+      initializeEmptyText();
+    }
+    else {
+      changeCursorTo(getRow(rowindex-1).find('.char:first'));
     }
   }
 
