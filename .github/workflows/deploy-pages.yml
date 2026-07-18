@@ -3,6 +3,7 @@ name: "Deploy to GitHub pages"
 on:
   push:
     branches:
+      - master
       - main
       - github-pages
 
