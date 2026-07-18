@@ -34,7 +34,7 @@ function create_VIM_TESTS(interpreter, testengine) {
     interpretSequence("2w");
     shouldBe("Hello, this is [r]eally nice.");
     interpretSequence("p"); // paste
-    shouldBe("Hello, this is rthis [i]eally nice");
+    shouldBe("Hello, this is rthis [i]eally nice.");
   });
 
   register("Visual mode: yank and paste more than a line", function() {
@@ -44,7 +44,7 @@ function create_VIM_TESTS(interpreter, testengine) {
     interpretSequence("y"); // yank
     shouldBe("He[l]lo, this is|really nice."); // after yanking cursor should be back to original location
     interpretSequence("p"); // paste
-    shouldBe("He[l]llo, this is|realo, this is|really nice.");
+    shouldBe("Hel[l]lo, this is|realo, this is|really nice.");
   });
 
   registerBasic("Visual mode: delete word",
@@ -57,10 +57,10 @@ function create_VIM_TESTS(interpreter, testengine) {
                 "vwwd",
                 "Hello, [e]ally nice.");
 
-  registerBasic("Visual mode: find until next 'n' and delete",
+  registerBasic("Visual mode: delete till next 'n'",
                 "Hello, [t]his is really nice.",
                 "vfnd",
-                "Hello, [n]ice.");
+                "Hello, [i]ce.");
 
   register("Visual block mode: add prefix for lines", function() {
     setup("Zero|[F]irst|Second|Third|Fourth");
@@ -81,7 +81,7 @@ function create_VIM_TESTS(interpreter, testengine) {
     interpretSequence(["-", "Space"]); // characters to insert before all selected lines
     interpretOneCommand("Esc");
 
-    shouldBe("Zero|First|[-] Second|- Third|Fourth");
+    shouldBe("Zero|First|Second|[-] Third|- Fourth");
   });
 
   register("Visual block mode: add text to the end of lines", function() {
@@ -89,10 +89,11 @@ function create_VIM_TESTS(interpreter, testengine) {
     interpretOneCommand("ctrl-v"); // set visual block mode
     interpretSequence("jj"); // go down two lines
 	  interpretOneCommand("$"); // insert at the end of each line (does not care about columns)
+    interpretOneCommand("A");
     interpretSequence("?!"); // characters to insert after all selected lines
     interpretOneCommand("Esc");
 
-    shouldBe("Zero|[F]irst?!|- SecondLongIsThis?!|- Third?!|Fourth?!");
+    shouldBe("Zero|Firs[t]?!|SecondLongIsThis?!|Third?!|Fourth");
   });
 
   register("Visual block mode: add text after block", function() {
@@ -103,7 +104,7 @@ function create_VIM_TESTS(interpreter, testengine) {
     interpretSequence("?!"); // characters to insert after all selected lines
     interpretOneCommand("Esc");
 
-    shouldBe("Zero|[1]23?!|- 1  ?!|- 123?!45|Fourth?!");
+    shouldBe("Zero|12[3]?!|1  ?!|123?!45|Fourth");
   });
 
   register("Insert 3 times given text", function() {
@@ -182,7 +183,9 @@ function create_VIM_TESTS(interpreter, testengine) {
   register("Search for pattern, two words (tests space)", function() {
         setup("h[e]llo. what is up. what is?");
         interpretOneCommand("/"); // there will be search of something 
-        interpretSequence("what is"); // text to be found
+        interpretSequence("what"); // text to be found
+        interpretOneCommand("Space");
+        interpretSequence("is");
         interpretOneCommand("Enter"); // first occurrence is searched 
         
         shouldBe("hello. [w]hat is up. what is?");
@@ -297,7 +300,7 @@ function create_VIM_TESTS(interpreter, testengine) {
   registerBasic("Goto previous word, ignore punctuation",
                 "Hello, [w]hat's up.",
                 "B",
-                "Hell[o], what's up.");
+                "[H]ello, what's up.");
 
   registerBasic("Goto end of word, ignore punctuation",
                 "He[l]lo, nice.",
@@ -505,11 +508,10 @@ function create_VIM_TESTS(interpreter, testengine) {
   });
 
   register("key press writes text in insert mode", function() {
-    environment.setInsertMode();
-    test(
-         "ab[c]",
-         "t",
-         "abt[c]");
+    setup("ab[c]");
+    interpretOneCommand("i");
+    interpretOneCommand("t");
+    shouldBe("abt[c]");
   });
 
   register("Insert at the beginning of a line", function() {
@@ -632,7 +634,7 @@ function create_VIM_TESTS(interpreter, testengine) {
   registerBasic("Repeat command: dd",
                 "First|Sec[o]nd|Third",
                 "dd.",
-                "Firs[t]");
+                "[F]irst");
 
   register("Insert after cursor, stay in insert mode", function() {
     setup("F[o]o is bar");

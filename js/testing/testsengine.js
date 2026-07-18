@@ -51,6 +51,7 @@ function create_VIM_TESTENGINE(interpreter, doc, messager, delayBetweenTests) {
     var amountOfLineBreakers = countChars('|', text, cursorIndex);
     var cleanText = text.replace(/\[/g, '').replace(/\]/g, ''); // removes cursor's '[' and ']'
     cleanText = cleanText.replace(/\|/g, doc.lineBreakMarker);
+    environment.reset();
     executor.initializeWithText(cleanText);
     executor.changeCursorToIndex(cursorIndex - 1 - amountOfLineBreakers); // -1 because [ before cursor was moved
   }
@@ -81,6 +82,7 @@ function create_VIM_TESTENGINE(interpreter, doc, messager, delayBetweenTests) {
 
   function testFailed() {
     log("Test failed.", '', 'failed');
+    testview.testUnitFailed();
     failedTests++;
   }
 

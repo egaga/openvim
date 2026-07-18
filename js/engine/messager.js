@@ -16,23 +16,10 @@ function create_VIM_MESSAGER() {
 
   function nextId() { return idGenerator++; }
 
-  // supported message types (TODO maybe should be registerable on the fly)
-  var messageListeners = {
-    'interpreter_initialized': [],
-    'cursor_changed': [],
-    'interpret_code': [],
-    'interpreter_interpreted': [],
-    'updated_mode': [],
-    'pressed_key': [],
-    'tutorial_next_command': [],
-    'tutorial_next_section': [],
-    'waiting_for_code': [],
-    'abort_section': [],
-    'searchbar_visible': [],
-    'updated_searchtext': []
-  };
+  var messageListeners = {};
 
   function sendMessage(messageType, message) {
+    if(!messageListeners[messageType]) return;
     var messageListenersForMessage = messageListeners[messageType];
 
     var removables = [];
@@ -53,7 +40,8 @@ function create_VIM_MESSAGER() {
 
   function listenTo(messageType, fun) {
     var id = nextId();
-
+    if(!messageListeners[messageType])
+      messageListeners[messageType] = [];
     messageListeners[messageType].push(
         {
           'id': id,
