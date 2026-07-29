@@ -397,7 +397,7 @@ function create_VIM_EXECUTOR(doc, context) {
     var fromStartOfALine = from.is(moveToStartOfLine(fromLine));
     var toEndOfALine = to.is(moveToEndOfLine(toLine));
     // deleting must be delayed, since affects each
-    var to_be_removed = [from];
+    var to_be_removed = [];
 
     chars().each(function(index) {
       if(isBetween(index, fromIndex, toIndex, inclusiveFrom, inclusiveTo)) {
@@ -670,6 +670,7 @@ function create_VIM_EXECUTOR(doc, context) {
         obj = first(next.find(S.character));
       else {
         obj = last(word(obj).find(S.character));
+        obj.hitLastPossible = true;
         break;
       }
     }
