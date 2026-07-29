@@ -99,24 +99,13 @@ function create_VIM_TIMESCOMMANDS(environment, messager) {
       return new_movement(from, to);
     } else if(movement === 'w') {
       var to = exe.moveToStartOfNextWord(obj, times);
-
-      if(to.lastPossible !== undefined) {
-        // because lastPossible is defined, we couldn't reach the next word
-        var inclusiveAtEnd = true;
-        var toObj = to.lastPossible;
-      } else {
-        var inclusiveAtEnd = false;
-        var toObj = to;
-      }
-
-      return new_movement(obj, toObj, true, inclusiveAtEnd);
+      return new_movement(obj, to, true, !!to.hitLastPossible);
     } else if(movement === 'e') {
       var to = exe.moveToEndOfWord(obj, times);
       return new_movement(obj, to);
     } else if(movement === 'b') {
-      var from = exe.moveLeft(obj);
       var to = exe.moveToStartOfWord(obj, times);
-      return new_movement(from, to);
+      return new_movement(obj, to, false, true);
     } else {
       return empty_movement;
       //return obj;
